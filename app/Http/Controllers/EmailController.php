@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 
 use App\Clientinfo;
+use App\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Session;
@@ -13,6 +14,14 @@ class EmailController extends Controller
     public function add(){
 
         return view('email.add');
+    }
+    public function sendMail(){
+
+        $clientInfo=Clientinfo::select('clientname','email')->orderBy('clientname','ASC')->get();
+        $template=Template::select('templateid','name')->orderBy('templateid','ASC')->get();
+        return view('email.sendMail')
+            ->with('clientInfo',$clientInfo)
+            ->with('template',$template);
     }
     public function insert(Request $request){
 
