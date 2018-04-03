@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 Route::get('/Email/add', 'EmailController@add')->name('email.add');
 Route::post('/Email/add', 'EmailController@insert')->name('email.insert');
+
+Route::get('/Email/send', 'EmailController@sendMail')->name('email.send');

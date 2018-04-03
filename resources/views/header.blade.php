@@ -52,9 +52,9 @@
                 </li>
 
                 <li >
-                    <a href="addproduct.php">
+                    <a href="{{route('email.send')}}">
                         <i class="now-ui-icons location_map-big"></i>
-                        <p>Add Product</p>
+                        <p>Send Mail</p>
                     </a>
                 </li>
 
