@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/Email/add', 'EmailController@add')->name('email.add');
+Route::post('/Email/add', 'EmailController@insert')->name('email.insert');

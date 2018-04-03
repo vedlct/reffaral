@@ -30,9 +30,6 @@
 <body class="">
 <div class="wrapper ">
     <div class="sidebar" data-color="blue">
-        <!--
-    Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
--->
         <div class="logo">
             <a href="index.php" class="simple-text logo-normal">
                 LLoyd Baker
@@ -44,6 +41,13 @@
                     <a href="index.php">
                         <i class="now-ui-icons design_app"></i>
                         <p>Stock info</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('email.add')}}">
+                        <i class="now-ui-icons design_app"></i>
+                        <p>Add Emails</p>
                     </a>
                 </li>
 
