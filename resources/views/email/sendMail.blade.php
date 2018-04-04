@@ -1,114 +1,57 @@
 @extends('main')
 @section('header')
-
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-
+    {{--<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />--}}
 @endsection
-@section('content')
 
+@section('content')
     <div class="panel-header panel-header-sm">
     </div>
-    <div class="content">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="title">Send Emails</h5>
-                    </div>
-                    <div class="card-body">
-                        <form class="form-horizontal" method="post" action="{{route('email.insert')}}">
-                            {{csrf_field()}}
-
-                            <div class="form-group">
-
-                                <label class="control-label custom-label-style col-md-2">Discount</label>
-                                <input type="text" class="col-md-8 custom-input-style form-control" id="discount" name="discount" placeholder="Discount Amount" >
-
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label custom-label-style col-md-2 " for="exampleInputEmail">Email</label>
-
-                                    <select  class="form-control col-md-8 custom-input-style " >
-                                        <option value="">Select Template</option>
-                                        @foreach( $template as $template)
-                                        <option value="{{$template->templateid}}">{{$template->name}}</option>
-                                        @endforeach
-                                    </select>
-
-                            </div>
-
-                            <table id="example" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
-
-                                <tr>
-
-                                    <th>Select</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($clientInfo as $client)
-                                <tr>
-                                    <td><input data-panel-id="{{$client->clinetinfoid}}" onclick="selected_rows(this)"class="chk" name="selected_rows[]" type="checkbox"></td>
-                                    <td>{{$client->clientname}}</td>
-                                    <td>{{$client->email}}</td>
-                                </tr>
-                                @endforeach
-                                </tbody>
-
-                            </table>
+<div class="content">
+    <div class="card">
+        <br>
 
 
 
-                            <br>
+    <div class="table-responsive col-md-12">
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+            <tr>
 
-                            <div class="form-group">
-                                <div style="margin-left: 14%" class="col-md-8 custom-input-style">
-                                    <input type="submit" value="Submit" class="btn btn-primary">
-                                </div>
-                            </div>
+                <th>Select</th>
+                <th>Name</th>
+                <th>Email</th>
 
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($clientInfo as $client)
+                <tr>
+                    <td><input data-panel-id="{{$client->clinetinfoid}}" onclick="selected_rows(this)"class="chk" name="selected_rows[]" type="checkbox"></td>
+                    <td>{{$client->clientname}}</td>
+                    <td>{{$client->email}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+
+        </table>
+    </div></div>
+
+</div>
+
+
 @endsection
 @section('foot-js')
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
     <script>
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $(document).ready( function () {
+        $(document).ready(function() {
             $('#example').DataTable();
         } );
 
-        var selecteds = [];
-        function selected_rows(x) {
-            btn = $(x).data('panel-id');
-            var index = selecteds.indexOf(btn)
-            if (index == "-1"){
-                selecteds.push(btn);
-
-            }else {
-
-                selecteds.splice(index, 1);
-            }
-
-
-        }
-
     </script>
+
+
 
 @endsection
