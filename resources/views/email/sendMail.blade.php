@@ -1,7 +1,7 @@
 @extends('main')
 @section('header')
 
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
 
 @endsection
 @section('content')
@@ -19,56 +19,61 @@
                         {{--<form class="form-horizontal">--}}
 
 
-                            <div class="form-group">
-
-                                <label class="control-label custom-label-style col-md-2">Discount</label>
-                                <input type="text" class="col-md-8 custom-input-style form-control" id="discount" name="discount" placeholder="Discount Amount" >
-
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label custom-label-style col-md-2 " for="exampleInputEmail">Email</label>
-
-                                    <select  class="form-control col-md-8 custom-input-style " id="template" name="template">
-                                        <option value="">Select Template</option>
-                                        @foreach( $template as $template)
-                                        <option value="{{$template->templateid}}">{{$template->name}}</option>
-                                        @endforeach
-                                    </select>
-
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="control-label col-md-2">Discount</label>
+                                <input type="text" class="col-md-8  form-control" id="discount" name="discount" placeholder="Discount Amount" >
                             </div>
 
-                            <table id="example" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
+                        </div>
 
-                                <tr>
+                        <div class="form-group">
+                            <div class="row">
+                            <label class="control-label col-md-2 " for="exampleInputEmail">Email</label>
 
-                                    <th>Select</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
+                            <select  class="form-control col-md-8 " id="template" name="template">
+                                <option value="">Select Template</option>
+                                @foreach( $template as $template)
+                                    <option value="{{$template->templateid}}">{{$template->name}}</option>
+                                @endforeach
+                            </select>
+                            </div>
 
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($clientInfo as $client)
+                        </div>
+                        <br>
+
+                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+
+                            <tr>
+
+                                <th>Select</th>
+                                <th>Name</th>
+                                <th>Email</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($clientInfo as $client)
                                 <tr>
                                     <td><input data-panel-id="{{$client->clinetinfoid}}" onclick="selected_rows(this)"class="chk" name="selected_rows[]" type="checkbox"></td>
                                     <td>{{$client->clientname}}</td>
                                     <td>{{$client->email}}</td>
                                 </tr>
-                                @endforeach
-                                </tbody>
+                            @endforeach
+                            </tbody>
 
-                            </table>
+                        </table>
 
 
 
-                            <br>
+                        <br>
 
-                            <div class="form-group">
-                                <div style="margin-left: 14%" class="col-md-8 custom-input-style">
-                                    <a onclick="sendMail()" class="btn btn-primary">Submit</a>
-                                </div>
+                        <div class="form-group">
+                            <div style="margin-left: 14%" class="col-md-8 custom-input-style">
+                                <a onclick="sendMail()" class="btn btn-primary">Submit</a>
                             </div>
+                        </div>
 
                         {{--</form>--}}
                     </div>
@@ -81,8 +86,9 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
 
     <script>
 

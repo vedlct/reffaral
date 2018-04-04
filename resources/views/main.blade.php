@@ -19,5 +19,5 @@
 @yield('content')
 
 </div>
-@yield('foot-js')
+
 @include('footer')
