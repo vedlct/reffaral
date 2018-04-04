@@ -20,3 +20,6 @@ Route::post('/Email/add', 'EmailController@insert')->name('email.insert');
 
 Route::get('/Email/send', 'EmailController@sendMailShow')->name('email.sendMailShow');
 Route::post('/Email/send', 'EmailController@sendMail')->name('email.sendMail');
+
+
+Route::get('/Email/sendRefferEmail', 'EmailController@sendRefferEmail')->name('email.sendRefferMail');

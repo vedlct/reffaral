@@ -60,9 +60,9 @@
                 </li>
 
                 <li>
-                    <a href="product.php">
+                    <a href="{{route('email.sendRefferMail')}}">
                         <i class="now-ui-icons design_app"></i>
-                        <p>Product list</p>
+                        <p>Reffer Email</p>
                     </a>
                 </li>
 
