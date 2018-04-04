@@ -24,6 +24,7 @@
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     @yield('header')
     <style>
         .table thead tr th{
