@@ -1,7 +1,7 @@
 @extends('main')
 @section('header')
 
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
 
 @endsection
 @section('content')
@@ -16,26 +16,29 @@
                         <h5 class="title">Send Emails</h5>
                     </div>
                     <div class="card-body">
-                        <form class="form-horizontal" method="post" action="{{route('email.insert')}}">
-                            {{csrf_field()}}
+                        {{--<form class="form-horizontal">--}}
 
-                            <div class="form-group">
 
-                                <label class="control-label custom-label-style col-md-2">Discount</label>
-                                <input type="text" class="col-md-8 custom-input-style form-control" id="discount" name="discount" placeholder="Discount Amount" >
-
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="control-label col-md-2">Discount</label>
+                                <input type="text" class="col-md-8  form-control" id="discount" name="discount" placeholder="Discount Amount" >
                             </div>
-                            <div class="form-group">
-                                <label class="control-label custom-label-style col-md-2 " for="exampleInputEmail">Email</label>
 
-                                    <select  class="form-control col-md-8 custom-input-style " >
-                                        <option value="">Select Template</option>
-                                        @foreach( $template as $template)
-                                        <option value="{{$template->templateid}}">{{$template->name}}</option>
-                                        @endforeach
-                                    </select>
+                        </div>
 
+                        <div class="form-group">
+                            <div class="row">
+                            <label class="control-label col-md-2 " for="exampleInputEmail">Email</label>
+
+                            <select  class="form-control col-md-8 " id="template" name="template">
+                                <option value="">Select Template</option>
+                                @foreach( $template as $template)
+                                    <option value="{{$template->templateid}}">{{$template->name}}</option>
+                                @endforeach
+                            </select>
                             </div>
+
 
                             <table id="example" class="table table-striped table-bordered" style="width:100%">
 
@@ -70,21 +73,16 @@
                                     @endphp
                                 @endforeach
 
-                                </tbody>
 
-                            </table>
+                        </div>
 
-
-
-                            <br>
-
-                            <div class="form-group">
-                                <div style="margin-left: 14%" class="col-md-8 custom-input-style">
-                                    <input type="submit" value="Submit" class="btn btn-primary">
-                                </div>
+                        <div class="form-group">
+                            <div style="margin-left: 14%" class="col-md-8 custom-input-style">
+                                <a onclick="sendMail()" class="btn btn-primary">Submit</a>
                             </div>
+                        </div>
 
-                        </form>
+                        {{--</form>--}}
                     </div>
                 </div>
             </div>
@@ -93,8 +91,11 @@
 @endsection
 @section('foot-js')
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
 
     <script>
 
@@ -121,6 +122,36 @@
             }
 
 
+        }
+
+        function sendMail() {
+
+
+            var client=selecteds;
+
+            if (client.length >0) {
+
+                var discount =$('#discount').val();
+                var template =$('#template').val();
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{!!route('email.sendMail') !!}",
+                    cache: false,
+                    data: {_token: CSRF_TOKEN,'discount': discount,'template':template,'client':client},
+                    success: function (data) {
+
+                        selecteds=[];
+                        $(':checkbox:checked').prop('checked',false);
+
+                    }
+
+                });
+            }
+            else {
+                alert("Please Select a Client first");
+            }
         }
 
     </script>

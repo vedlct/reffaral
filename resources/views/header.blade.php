@@ -19,6 +19,10 @@
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{url('public/assets/demo/demo.css')}}" rel="stylesheet" />
+    {{--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     @yield('header')
     <style>
@@ -53,7 +57,7 @@
                 </li>
 
                 <li >
-                    <a href="{{route('email.send')}}">
+                    <a href="{{route('email.sendMailShow')}}">
                         <i class="now-ui-icons location_map-big"></i>
                         <p>Send Mail</p>
                     </a>

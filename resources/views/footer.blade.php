@@ -29,6 +29,8 @@
 <script src="{{url('public/assets/js/now-ui-dashboard.js?v=1.0.1')}}"></script>
 <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{url('public/assets/demo/demo.js')}}"></script>
+
+@yield('foot-js')
 <script>
 //    $(document).ready(function() {
 //        // Javascript method's body can be found in assets/js/demos.js
