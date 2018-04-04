@@ -1,6 +1,6 @@
 @extends('main')
 @section('header')
-    <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+    {{--<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />--}}
 
 @endsection
 @section('content')
@@ -38,24 +38,25 @@
 
                             <table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
+
                                 <tr>
-                                    @foreach($clientInfo as $client)
+
                                     <th>Select</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    @endforeach
+
                                 </tr>
                                 </thead>
                                 <tbody>
-
+                                @foreach($clientInfo as $client)
                                 <tr>
-                                    @foreach($clientInfo as $client)
+
                                     <td><input name="selected_rows[]" type="checkbox"></td>
                                     <td>{{$client->clientname}}</td>
                                     <td>{{$client->clientname}}</td>
-                                    @endforeach
-                                </tr>
 
+                                </tr>
+                                @endforeach
                                 </tbody>
 
                             </table>
