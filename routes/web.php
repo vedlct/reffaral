@@ -25,3 +25,9 @@ Route::get('/Email/send', 'EmailController@sendMail')->name('email.send');
 Route::get('/Email/send', 'EmailController@sendMailShow')->name('email.sendMailShow');
 Route::post('/Email/send', 'EmailController@sendMail')->name('email.sendMail');
 
+
+
+
+Route::get('/Email/sendRefferEmail', 'EmailController@sendRefferEmail')->name('email.sendRefferMail');
+Route::get('/Email/sendEmail', 'EmailController@sendEmail')->name('email.sendEmail');
+

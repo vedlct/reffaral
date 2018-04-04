@@ -6,6 +6,7 @@ use App\Clientinfo;
 use App\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 use Session;
 
 
@@ -22,6 +23,14 @@ class EmailController extends Controller
         return view('email.sendMail')
             ->with('clientInfo',$clientInfo)
             ->with('template',$template);
+    }
+    public function sendRefferEmail(){
+
+//        $clientInfo=Clientinfo::select('clinetinfoid','clientname','email')->orderBy('clientname','ASC')->get();
+//        $template=Template::select('templateid','name')->orderBy('templateid','ASC')->get();
+        return view('client.refferMail');
+//            ->with('clientInfo',$clientInfo)
+//            ->with('template',$template);
     }
     public function sendMail(Request $r){
 
@@ -60,7 +69,10 @@ class EmailController extends Controller
 
     public function sendEmail(){
 
-
+        Mail::send('email.test', ['key' => 'value'], function($message)
+        {
+            $message->to('md.sakibrahman@gmail.com', 'John Smith')->subject('Welcome!');
+        });
     }
 
 }
