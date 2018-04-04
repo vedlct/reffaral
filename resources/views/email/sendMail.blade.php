@@ -1,6 +1,7 @@
 @extends('main')
 @section('header')
-    {{--<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />--}}
+
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
 
 @endsection
 @section('content')
@@ -37,26 +38,38 @@
                             </div>
 
                             <table id="example" class="table table-striped table-bordered" style="width:100%">
+
                                 <thead>
-
                                 <tr>
-
+                                @for($i=0 ; $i<3 ; $i++)
                                     <th>Select</th>
                                     <th>Name</th>
                                     <th>Email</th>
-
+                                @endfor
                                 </tr>
                                 </thead>
+
                                 <tbody>
+
+                                    @php
+                                    $count = 1
+                                    @endphp
                                 @foreach($clientInfo as $client)
-                                <tr>
 
-                                    <td><input name="selected_rows[]" type="checkbox"></td>
-                                    <td>{{$client->clientname}}</td>
-                                    <td>{{$client->clientname}}</td>
-
-                                </tr>
+                                    @if($count % 4 == 0)
+                                        <tr>
+                                    @endif
+                                    <td><input data-panel-id="{{$client->clinetinfoid}}" onclick="selected_rows(this)" class="chk" name="selected_rows[]" type="checkbox"></td>
+                                    <td>{{$client->clientname .$count}}</td>
+                                    <td>{{$client->email}}</td>
+                                    @if($count % 4 == 0)
+                                        </tr>
+                                    @endif
+                                    @php
+                                    $count ++
+                                    @endphp
                                 @endforeach
+
                                 </tbody>
 
                             </table>
@@ -80,11 +93,36 @@
 @endsection
 @section('foot-js')
 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
     <script>
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         $(document).ready( function () {
             $('#example').DataTable();
         } );
+
+        var selecteds = [];
+        function selected_rows(x) {
+            btn = $(x).data('panel-id');
+            var index = selecteds.indexOf(btn)
+            if (index == "-1"){
+                selecteds.push(btn);
+
+            }else {
+
+                selecteds.splice(index, 1);
+            }
+
+
+        }
+
     </script>
 
 @endsection
