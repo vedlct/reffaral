@@ -16,8 +16,8 @@
                         <h5 class="title">Send Emails</h5>
                     </div>
                     <div class="card-body">
-                        <form class="form-horizontal" method="post" action="{{route('email.insert')}}">
-                            {{csrf_field()}}
+                        {{--<form class="form-horizontal">--}}
+
 
                             <div class="form-group">
 
@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label class="control-label custom-label-style col-md-2 " for="exampleInputEmail">Email</label>
 
-                                    <select  class="form-control col-md-8 custom-input-style " >
+                                    <select  class="form-control col-md-8 custom-input-style " id="template" name="template">
                                         <option value="">Select Template</option>
                                         @foreach( $template as $template)
                                         <option value="{{$template->templateid}}">{{$template->name}}</option>
@@ -66,11 +66,11 @@
 
                             <div class="form-group">
                                 <div style="margin-left: 14%" class="col-md-8 custom-input-style">
-                                    <input type="submit" value="Submit" class="btn btn-primary">
+                                    <a onclick="sendMail()" class="btn btn-primary">Submit</a>
                                 </div>
                             </div>
 
-                        </form>
+                        {{--</form>--}}
                     </div>
                 </div>
             </div>
@@ -78,6 +78,8 @@
     </div>
 @endsection
 @section('foot-js')
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -107,6 +109,36 @@
             }
 
 
+        }
+
+        function sendMail() {
+
+
+            var client=selecteds;
+
+            if (client.length >0) {
+
+                var discount =$('#discount').val();
+                var template =$('#template').val();
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{!!route('email.sendMail') !!}",
+                    cache: false,
+                    data: {_token: CSRF_TOKEN,'discount': discount,'template':template,'client':client},
+                    success: function (data) {
+
+                        selecteds=[];
+                        $(':checkbox:checked').prop('checked',false);
+
+                    }
+
+                });
+            }
+            else {
+                alert("Please Select a Client first");
+            }
         }
 
     </script>

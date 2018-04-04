@@ -53,7 +53,7 @@
                 </li>
 
                 <li >
-                    <a href="{{route('email.send')}}">
+                    <a href="{{route('email.sendMailShow')}}">
                         <i class="now-ui-icons location_map-big"></i>
                         <p>Send Mail</p>
                     </a>
