@@ -3,7 +3,7 @@
 <div class="main-panel">
     <!-- Navbar -->
 @include('navigation')
-    
+
     <div id="SessionMessage">
         @if(Session::has('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
@@ -19,5 +19,5 @@
 @yield('content')
 
 </div>
-
+@yield('foot-js')
 @include('footer')
