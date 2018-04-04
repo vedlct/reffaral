@@ -15,13 +15,20 @@ class EmailController extends Controller
 
         return view('email.add');
     }
-    public function sendMail(){
+    public function sendMailShow(){
 
         $clientInfo=Clientinfo::select('clinetinfoid','clientname','email')->orderBy('clientname','ASC')->get();
         $template=Template::select('templateid','name')->orderBy('templateid','ASC')->get();
         return view('email.sendMail')
             ->with('clientInfo',$clientInfo)
             ->with('template',$template);
+    }
+    public function sendMail(Request $r){
+
+        $discount=$r->discount;
+        $templateId=$r->template;
+        $clients=$r->client;
+
     }
     public function insert(Request $request){
 
