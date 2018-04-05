@@ -20,7 +20,7 @@ class Client extends Controller
         $email =  $r->example_emailBS;
         $a = json_decode( $email, true );
         foreach ($a as $value){
-            echo $value;
+            echo $value.'<br>';
         }
 
 
