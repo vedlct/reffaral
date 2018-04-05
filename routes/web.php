@@ -31,3 +31,5 @@ Route::post('/Email/send', 'EmailController@sendMail')->name('email.sendMail');
 Route::get('/Email/sendRefferEmail', 'EmailController@sendRefferEmail')->name('email.sendRefferMail');
 Route::get('/Email/sendEmail', 'EmailController@sendEmail')->name('email.sendEmail');
 
+Route::get('/ShareEmail', 'Client@showRaffaral')->name('shareemail');
+Route::post('/saveemail', 'Client@saveEmail')->name('saveemail');

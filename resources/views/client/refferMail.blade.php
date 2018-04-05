@@ -49,7 +49,7 @@
 @endsection
 @section('foot-js')
 
-    <!-- For Semantic UI Button -->
+    {{--<!-- For Semantic UI Button -->--}}
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.2/semantic.min.css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.2/semantic.min.js"></script>
 

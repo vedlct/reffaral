@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{url('public/assets/img/apple-icon.png')}}">
     <link rel="icon" type="image/png" href="{{url('public/assets/img/favicon.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>LLoyd Baker | Admin Panel</title>
+    <title>Raffaral| Admin Panel</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -24,7 +24,7 @@
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    {{--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">--}}
     @yield('header')
     <style>
         .table thead tr th{
@@ -38,7 +38,7 @@
     <div class="sidebar" data-color="blue">
         <div class="logo">
             <a href="index.php" class="simple-text logo-normal">
-                LLoyd Baker
+               Raffaral
             </a>
         </div>
         <div class="sidebar-wrapper">
