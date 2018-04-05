@@ -18,13 +18,11 @@ class Client extends Controller
 
 
         $email =  $r->example_emailBS;
-//        return $email[0];
+        $a = json_decode( $email, true );
+        foreach ($a as $value){
+            echo $value;
+        }
 
-//        for ($i = 0 ; $i<count($email); $i++){
-//            echo $email[$i];
-//        }
-
-        return json_decode($email);
 
     }
 }
