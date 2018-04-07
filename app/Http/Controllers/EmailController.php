@@ -39,6 +39,8 @@ class EmailController extends Controller
         $text=$r->text;
         $data=array('text'=>$text);
 
+        return $data;
+
         if ($template == Template[0]){
             $inviteForDiscount="email.test";
         }
