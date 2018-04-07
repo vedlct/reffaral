@@ -39,20 +39,19 @@ class EmailController extends Controller
         $text=$r->text;
         $data=array('text'=>$text);
 
-        return $data;
+
 
         if ($template == Template[0]){
             $inviteForDiscount="email.test";
         }
 
-        Mail::send($inviteForDiscount,$data, function($message) use ($data)
+        Mail::send("email.test",$data, function($message) use ($data)
         {
             $message->to('md.sakibrahman@gmail.com', 'John Smith')->subject('Welcome!');
         });
 
-
-
     }
+
     public function insert(Request $request){
 
         $rules=[

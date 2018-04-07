@@ -8,9 +8,11 @@ class Client extends Controller
 {
     //
 
-    public function showRaffaral(){
+    public function showRaffaral(Request $r){
 
-        return view('clintside');
+        $clientId =  $r->hiddennumber;
+        return view('clintside')
+            ->with('clientid', $clientId);
     }
 
     public function saveEmail(Request $r){
