@@ -17,7 +17,7 @@ class EmailController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function add(){
 
         return view('email.add');
