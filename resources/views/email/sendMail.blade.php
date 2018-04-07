@@ -29,13 +29,14 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <label class="control-label col-md-2 " for="exampleInputEmail">Email</label>
+                                <label class="control-label col-md-2 " for="exampleInputEmail">Template</label>
 
                                 <select  class="form-control col-md-8 " id="template" name="template">
                                     <option value="">Select Template</option>
-                                    @foreach( $template as $template)
-                                        <option value="{{$template->templateid}}">{{$template->name}}</option>
-                                    @endforeach
+                                    @for($i=0;$i<count(Template);$i++)
+                                        <option value="{{Template[$i]}}">{{Template[$i]}}</option>
+                                    @endfor
+
                                 </select>
                             </div>
 
@@ -45,7 +46,7 @@
                             <div class="row">
                                 <label class="control-label col-md-2 " for="exampleInputEmail">Text</label>
 
-                                <textarea class="form-control ckeditor" id="ckeditor" name="text" rows="6"></textarea>
+                                <textarea class="form-control ckeditor" id="text" name="text" rows="6"></textarea>
 
                             </div>
                         </div>
@@ -126,12 +127,13 @@
             if (client.length >0) {
                 var discount =$('#discount').val();
                 var template =$('#template').val();
+                var text =$('#text').val();
                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 $.ajax({
                     type: 'POST',
                     url: "{!!route('email.sendMail') !!}",
                     cache: false,
-                    data: {_token: CSRF_TOKEN,'discount': discount,'template':template,'client':client},
+                    data: {_token: CSRF_TOKEN,'discount': discount,'template':template,'client':client,'text':text},
                     success: function (data) {
                         selecteds=[];
                         $(':checkbox:checked').prop('checked',false);
