@@ -16,6 +16,24 @@ class EmailController extends Controller
 
         return view('email.add');
     }
+
+    public function show(){
+        $clientInfo=Clientinfo::select('clinetinfoid','clientname','email')->orderBy('clientname','ASC')->get();
+
+        return view('email.show')
+                ->with('clientInfo',$clientInfo);
+    }
+
+    public function update(Request $r){
+        $client=Clientinfo::findOrFail($r->id);
+        $client->clientname	=$r->name;
+        $client->email	=$r->email;
+        $client->save();
+
+        Session::flash('message', 'Updated Successfully!');
+        return back();
+    }
+
     public function sendMailShow(){
 
         $clientInfo=Clientinfo::select('clinetinfoid','clientname','email')->orderBy('clientname','ASC')->get();
@@ -73,6 +91,14 @@ class EmailController extends Controller
         {
             $message->to('md.sakibrahman@gmail.com', 'John Smith')->subject('Welcome!');
         });
+    }
+
+    public function delete(Request $r){
+        $client=Clientinfo::findOrFail($r->id);
+        $client->delete();
+        Session::flash('message', 'Deleted Successfully!');
+        return back();
+
     }
 
 }

@@ -34,7 +34,11 @@
 </head>
 
 <body class="">
+
 <div class="wrapper ">
+    @if(Session::has('message'))
+        <p class="alert alert-info">{{ Session::get('message') }}</p>
+    @endif
     <div class="sidebar" data-color="blue">
         <div class="logo">
             <a href="index.php" class="simple-text logo-normal">
@@ -54,6 +58,12 @@
                     <a href="{{route('email.add')}}">
                         <i class="now-ui-icons design_app"></i>
                         <p>Add Emails</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('email.show')}}">
+                        <i class="now-ui-icons design_app"></i>
+                        <p>All Emails</p>
                     </a>
                 </li>
 

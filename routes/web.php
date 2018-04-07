@@ -16,7 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/Email/add', 'EmailController@add')->name('email.add');
+Route::get('/Email/show', 'EmailController@show')->name('email.show');
 Route::post('/Email/add', 'EmailController@insert')->name('email.insert');
+Route::post('/Email/delete', 'EmailController@delete')->name('email.delete');
+Route::post('/Email/update', 'EmailController@update')->name('email.update');
+
 
 
 Route::get('/Email/send', 'EmailController@sendMail')->name('email.send');
