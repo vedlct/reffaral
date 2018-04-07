@@ -40,6 +40,16 @@
                             </div>
 
                         </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="control-label col-md-2 " for="exampleInputEmail">Text</label>
+
+                                <textarea class="form-control ckeditor" id="ckeditor" name="text" rows="6"></textarea>
+
+                            </div>
+                        </div>
+
                         <br>
 
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -88,6 +98,7 @@
 
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="{{url('public/assets/ckeditor/ckeditor.js')}}"></script>
 
 
     <script>

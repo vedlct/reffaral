@@ -38,6 +38,13 @@ class EmailController extends Controller
         $templateId=$r->template;
         $clients=$r->client;
 
+//        Mail::send('email.test', ['key' => 'value'], function($message)
+//        {
+//            $message->to('md.sakibrahman@gmail.com', 'John Smith')->subject('Welcome!');
+//        });
+
+
+
     }
     public function insert(Request $request){
 
