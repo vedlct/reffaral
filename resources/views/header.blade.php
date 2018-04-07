@@ -34,7 +34,9 @@
 </head>
 
 <body class="">
+
 <div class="wrapper ">
+
     <div class="sidebar" data-color="blue">
         <div class="logo">
             <a href="index.php" class="simple-text logo-normal">
@@ -43,56 +45,37 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="active">
-                    <a href="index.php">
-                        <i class="now-ui-icons design_app"></i>
-                        <p>Stock info</p>
-                    </a>
-                </li>
 
-                <li>
-                    <a href="{{route('email.add')}}">
-                        <i class="now-ui-icons design_app"></i>
-                        <p>Add Emails</p>
-                    </a>
-                </li>
 
-                <li >
+                <li @if(Request::url()==Route('email.sendMailShow') )class="active" @endif>
                     <a href="{{route('email.sendMailShow')}}">
                         <i class="now-ui-icons location_map-big"></i>
                         <p>Send Mail</p>
                     </a>
                 </li>
 
-                <li>
+                <li @if(Request::url()==Route('email.add') )class="active" @endif>
+                    <a href="{{route('email.add')}}">
+                        <i class="now-ui-icons design_app"></i>
+                        <p>Add Emails</p>
+                    </a>
+                </li>
+                <li @if(Request::url()==Route('email.show') )class="active" @endif>
+                    <a href="{{route('email.show')}}">
+                        <i class="now-ui-icons design_app"></i>
+                        <p>All Emails</p>
+                    </a>
+                </li>
+
+
+                <li @if(Request::url()==Route('email.sendRefferMail') )class="active" @endif>
                     <a href="{{route('email.sendRefferMail')}}">
                         <i class="now-ui-icons design_app"></i>
                         <p>Reffer Email</p>
                     </a>
                 </li>
 
-                <li>
-                    <a href="user.php">
-                        <i class="now-ui-icons design_app"></i>
-                        <p>User list</p>
-                    </a>
-                </li>
 
-
-
-
-                <li>
-                    <a href="forms.php">
-                        <i class="now-ui-icons location_map-big"></i>
-                        <p>Forms</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="tables.php">
-                        <i class="now-ui-icons design_bullet-list-67"></i>
-                        <p>Table</p>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>

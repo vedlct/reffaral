@@ -78,6 +78,7 @@
             <div class="formstyle text-center">
                 <form class="form-inline" action="{{route('saveemail')}}" method="post">
                     {{csrf_field()}}
+                    {{$clientid}}
                     <div class='form-group'>
                         <div class='col-lg-12'>
                             <h4 for='example_emailBS' style="color: #1394D2">Lets Share your Email Addresses</h4>

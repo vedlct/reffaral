@@ -65,7 +65,7 @@
 <div class="container">
     <div class="row">
         <div class="header text-center">
-            {{--<img src="logo.png" alt="">--}}
+            <img src="{{url("public/img/logo.png")}}" alt="Tech Cloud Logo">
         </div>
     </div>
 </div>
@@ -82,12 +82,14 @@
     <div class="row">
         <div class="middle_content">
             <div class="content">
-                <form action="{{route('shareemail')}}" method="get">
-                {{$text}}
+
+                <form action="{{route('shareemail')}}" method="post">
+                    {{csrf_field()}}
                 <input type="hidden" value="2" name="hiddennumber">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <button type="submit" class="btn btn-default">Send Invites Now</button>
+                    <pre>{{$text}}</pre>
+                    <button type="submit" class="btn btn-default">Send Invites Now</button>
                 </form>
+
             </div>
         </div>
     </div>

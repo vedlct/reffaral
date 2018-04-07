@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 
 use App\Clientinfo;
+use App\Sendinfo;
 use App\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -12,10 +13,34 @@ use Session;
 
 class EmailController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function add(){
 
         return view('email.add');
     }
+
+    public function show(){
+        $clientInfo=Clientinfo::select('clinetinfoid','clientname','email')->orderBy('clientname','ASC')->get();
+
+        return view('email.show')
+                ->with('clientInfo',$clientInfo);
+    }
+
+    public function update(Request $r){
+        $client=Clientinfo::findOrFail($r->id);
+        $client->clientname	=$r->name;
+        $client->email	=$r->email;
+        $client->save();
+
+        Session::flash('message', 'Updated Successfully!');
+        return back();
+    }
+
     public function sendMailShow(){
 
         $clientInfo=Clientinfo::select('clinetinfoid','clientname','email')->orderBy('clientname','ASC')->get();
@@ -40,15 +65,25 @@ class EmailController extends Controller
         $data=array('text'=>$text);
 
 
+        foreach ($clients as $clientId) {
 
-        if ($template == Template[0]){
-            $inviteForDiscount="email.test";
+            $client = Clientinfo::findOrFail($clientId);
+            $SendInfo = new Sendinfo();
+            $SendInfo->offeramount = $discount;
+            $SendInfo->datetime = date(now());
+            $SendInfo->sentto = $client->clinetinfoid;
+            $SendInfo->save();
+
+            if ($template == Template[0]){
+                $inviteForDiscount="email.emailTamplate";
+            }
+            Mail::send($inviteForDiscount,$data, function($message) use ($client)
+            {
+//                $message->from('Techcloud', 'Discount Offer');
+                $message->to($client->email, $client->clientname)->subject('Discount Offer!');
+            });
         }
-
-        Mail::send("email.test",$data, function($message) use ($data)
-        {
-            $message->to('md.sakibrahman@gmail.com', 'John Smith')->subject('Welcome!');
-        });
+        Session::flash('message', 'Discount Offer Send successfully');
 
     }
 
@@ -86,6 +121,14 @@ class EmailController extends Controller
         {
             $message->to('md.sakibrahman@gmail.com', 'John Smith')->subject('Welcome!');
         });
+    }
+
+    public function delete(Request $r){
+        $client=Clientinfo::findOrFail($r->id);
+        $client->delete();
+        Session::flash('message', 'Deleted Successfully!');
+        return back();
+
     }
 
 }

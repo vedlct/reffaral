@@ -127,7 +127,6 @@
             if (client.length >0) {
                 var discount =$('#discount').val();
                 var template =$('#template').val();
-
                 var text = CKEDITOR.instances['text'].getData();
 
                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -137,8 +136,8 @@
                     cache: false,
                     data: {_token: CSRF_TOKEN,'discount': discount,'template':template,'client':client,'text':text},
                     success: function (data) {
-                        selecteds=[];
-                        $(':checkbox:checked').prop('checked',false);
+                        location.reload();
+
 
                     }
                 });

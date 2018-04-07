@@ -12,11 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('/Email/add', 'EmailController@add')->name('email.add');
+Route::get('/Email/show', 'EmailController@show')->name('email.show');
 Route::post('/Email/add', 'EmailController@insert')->name('email.insert');
+Route::post('/Email/delete', 'EmailController@delete')->name('email.delete');
+Route::post('/Email/update', 'EmailController@update')->name('email.update');
+
 
 
 Route::get('/Email/send', 'EmailController@sendMail')->name('email.send');
@@ -26,10 +30,11 @@ Route::get('/Email/send', 'EmailController@sendMailShow')->name('email.sendMailS
 Route::post('/Email/send', 'EmailController@sendMail')->name('email.sendMail');
 
 
-
-
 Route::get('/Email/sendRefferEmail', 'EmailController@sendRefferEmail')->name('email.sendRefferMail');
 Route::get('/Email/sendEmail', 'EmailController@sendEmail')->name('email.sendEmail');
 
 Route::get('/ShareEmail', 'Client@showRaffaral')->name('shareemail');
 Route::post('/saveemail', 'Client@saveEmail')->name('saveemail');
+
+Auth::routes();
+//Route::get('/home', 'EmailController@sendMail')->name('home');
