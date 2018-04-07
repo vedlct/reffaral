@@ -76,7 +76,7 @@ class EmailController extends Controller
 
     public function sendEmail(){
 
-        Mail::send('email.test', ['key' => 'value'], function($message)
+        Mail::send('email.emailTamplate', ['key' => 'value'], function($message)
         {
             $message->to('md.sakibrahman@gmail.com', 'John Smith')->subject('Welcome!');
         });
