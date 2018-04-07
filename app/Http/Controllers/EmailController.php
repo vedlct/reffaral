@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 
 use App\Clientinfo;
+use App\Sendinfo;
 use App\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -63,18 +64,25 @@ class EmailController extends Controller
         $text=$r->text;
         $data=array('text'=>$text);
 
-        return $data;
+        foreach ($clients as $clientId) {
 
-        if ($template == Template[0]){
-            $inviteForDiscount="email.test";
+            $client = Clientinfo::findOrFail($clientId);
+            $SendInfo = new Sendinfo();
+            $SendInfo->offeramount = $discount;
+            $SendInfo->datetime = date(now());
+            $SendInfo->sentto = $client->clinetinfoid;
+            $SendInfo->save();
+
+            if ($template == Template[0]){
+                $inviteForDiscount="email.test";
+            }
+            Mail::send($inviteForDiscount,$data, function($message) use ($client)
+            {
+                $message->from('Techcloudltd.com', 'Discount Offer');
+                $message->to($client->email, $client->clientname)->subject('Discount Offer!');
+            });
         }
-
-        Mail::send($inviteForDiscount,$data, function($message) use ($data)
-        {
-            $message->to('md.sakibrahman@gmail.com', 'John Smith')->subject('Welcome!');
-        });
-
-
+        Session::flash('message', 'Discount Offer Send successfully');
 
     }
     public function insert(Request $request){

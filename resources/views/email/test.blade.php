@@ -65,7 +65,7 @@
 <div class="container">
     <div class="row">
         <div class="header text-center">
-            {{--<img src="logo.png" alt="">--}}
+            <img src="{{url("public/img/logo.png")}}" alt="Tech Cloud Logo">
         </div>
     </div>
 </div>
@@ -84,10 +84,8 @@
     <div class="row">
         <div class="middle_content">
             <div class="content">
-                @foreach($data as $data)
-                {{$data->text}}
-                @endforeach
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                <pre>{{$text}}</pre>
                 <button type="button" class="btn btn-default">Send Invites Now</button>
             </div>
         </div>
