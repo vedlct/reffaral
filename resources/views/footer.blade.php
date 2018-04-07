@@ -30,6 +30,10 @@
 <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{url('public/assets/demo/demo.js')}}"></script>
 
+<script>
+    var ckBaseUrl = "{{url('')}}";
+</script>
+
 @yield('foot-js')
 <script>
 //    $(document).ready(function() {

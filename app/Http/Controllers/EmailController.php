@@ -12,6 +12,12 @@ use Session;
 
 class EmailController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function add(){
 
         return view('email.add');
@@ -37,10 +43,9 @@ class EmailController extends Controller
     public function sendMailShow(){
 
         $clientInfo=Clientinfo::select('clinetinfoid','clientname','email')->orderBy('clientname','ASC')->get();
-        $template=Template::select('templateid','name')->orderBy('templateid','ASC')->get();
+
         return view('email.sendMail')
-            ->with('clientInfo',$clientInfo)
-            ->with('template',$template);
+            ->with('clientInfo',$clientInfo);
     }
     public function sendRefferEmail(){
 
@@ -53,8 +58,23 @@ class EmailController extends Controller
     public function sendMail(Request $r){
 
         $discount=$r->discount;
-        $templateId=$r->template;
+        $template=$r->template;
         $clients=$r->client;
+        $text=$r->text;
+        $data=array('text'=>$text);
+
+        return $data;
+
+        if ($template == Template[0]){
+            $inviteForDiscount="email.test";
+        }
+
+        Mail::send($inviteForDiscount,$data, function($message) use ($data)
+        {
+            $message->to('md.sakibrahman@gmail.com', 'John Smith')->subject('Welcome!');
+        });
+
+
 
     }
     public function insert(Request $request){
