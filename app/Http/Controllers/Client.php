@@ -52,12 +52,9 @@ class Client extends Controller
             ->leftjoin('clientinfo','clientinfo.clinetinfoid','=','sendinfo.sentto')
             ->get();
 
-//        $referemail = Referemail::select('*', 'referemail.email as remail')->get();
 
-
-        $referemail=Referemail::select(DB::raw('GROUP_CONCAT(referemail.email SEPARATOR ",") AS refferedMail'),'fkdiscountlistid')
+        $referemail=Referemail::select(DB::raw('GROUP_CONCAT(referemail.email SEPARATOR " , ") AS refferedMail'),'fkdiscountlistid')
             ->leftjoin('discountlist','discountlist.discountlistid','=','referemail.fkdiscountlistid')
-
             ->groupBy('fkdiscountlistid')->get();
 
         //return $referemail;
