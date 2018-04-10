@@ -84,7 +84,7 @@ class EmailController extends Controller
 //                $message->from('Techcloud', 'Discount Offer');
                 $message->to($client->email, $client->clientname)->subject('Discount Offer!');
             });
-            array_splice($data, 1, 1);
+            
         }
         Session::flash('message', 'Discount Offer Send successfully');
 

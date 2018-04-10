@@ -49,7 +49,7 @@
                                <td>{{$dl->offeramount}}</td>
                                <td>@foreach($referemail as $re)
                                    @if($dl->discountlistid == $re->fkdiscountlistid)
-                                   {{$re->remail. " "." ,"}}
+                                           {{rtrim($re->remail. " "." ,",',')}}
                                    @endif
                                    @endforeach
                                </td>
