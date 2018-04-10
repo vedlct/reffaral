@@ -39,26 +39,33 @@
                             <tbody>
 
                             @php
-                            $count= 1
+                                $count= 1
                             @endphp
                             @foreach($dislist as $dl)
                                 <tr>
-                               <td>{{$count}}</td>
-                               <td>{{$dl->clientname}}</td>
-                               <td>{{$dl->cemail}}</td>
-                               <td>{{$dl->sdate}}</td>
-                               <td>{{$dl->ddate}}</td>
-                               <td>{{$dl->offeramount}}</td>
-                               <td>
-                                   @foreach($referemail as $re)
-                                   @if($dl->discountlistid == $re->fkdiscountlistid)
-                                           {{rtrim($re->remail. " "." ,",',')}}
-                                   @endif
-                                   @endforeach
-                               </td>
-                                @php
-                                 $count++
-                                @endphp
+                                    <td>{{$count}}</td>
+                                    <td>{{$dl->clientname}}</td>
+                                    <td>{{$dl->cemail}}</td>
+                                    <td>{{$dl->sdate}}</td>
+                                    <td>{{$dl->ddate}}</td>
+                                    <td>{{$dl->offeramount}}</td>
+                                    <td>
+                                        @php
+                                            $s = '';
+                                        @endphp
+                                        @foreach($referemail as $re)
+                                            @if($dl->discountlistid == $re->fkdiscountlistid)
+                                                @php
+                                                    $s .= $re->remail . ',';
+                                                @endphp
+                                                {{substr($s, 0, -1)}}
+
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    @php
+                                        $count++
+                                    @endphp
                                 </tr>
                             @endforeach
 
@@ -129,30 +136,30 @@
 
 
     {{--<script>--}}
-        {{--$.ajaxSetup({--}}
-            {{--headers: {--}}
-                {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-            {{--}--}}
-        {{--});--}}
+    {{--$.ajaxSetup({--}}
+    {{--headers: {--}}
+    {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+    {{--}--}}
+    {{--});--}}
 
-        {{--$(document).ready( function () {--}}
-            {{--$('#example').DataTable();--}}
-        {{--} );--}}
-
-
-        {{--//Set  target_user_modal--}}
-
-        {{--$('#target_user_modal').on('show.bs.modal', function(e){--}}
-            {{--var id = $(e.relatedTarget).data('id');--}}
-            {{--var name = $(e.relatedTarget).data('name');--}}
-            {{--var email = $(e.relatedTarget).data('email');--}}
-
-            {{--$(e.currentTarget).find('input[name="id"]').val(id);--}}
-            {{--$(e.currentTarget).find('input[name="name"]').val(name);--}}
-            {{--$(e.currentTarget).find('input[name="email"]').val(email);--}}
+    {{--$(document).ready( function () {--}}
+    {{--$('#example').DataTable();--}}
+    {{--} );--}}
 
 
-        {{--});--}}
+    {{--//Set  target_user_modal--}}
+
+    {{--$('#target_user_modal').on('show.bs.modal', function(e){--}}
+    {{--var id = $(e.relatedTarget).data('id');--}}
+    {{--var name = $(e.relatedTarget).data('name');--}}
+    {{--var email = $(e.relatedTarget).data('email');--}}
+
+    {{--$(e.currentTarget).find('input[name="id"]').val(id);--}}
+    {{--$(e.currentTarget).find('input[name="name"]').val(name);--}}
+    {{--$(e.currentTarget).find('input[name="email"]').val(email);--}}
+
+
+    {{--});--}}
 
 
 
