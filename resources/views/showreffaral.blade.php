@@ -140,34 +140,27 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
 
-    {{--<script>--}}
-    {{--$.ajaxSetup({--}}
-    {{--headers: {--}}
-    {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-    {{--}--}}
-    {{--});--}}
+    <script>
+    $.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
 
-    {{--$(document).ready( function () {--}}
-    {{--$('#example').DataTable();--}}
-    {{--} );--}}
+    $(document).ready( function () {
+    $('#example').DataTable({
 
-
-    {{--//Set  target_user_modal--}}
-
-    {{--$('#target_user_modal').on('show.bs.modal', function(e){--}}
-    {{--var id = $(e.relatedTarget).data('id');--}}
-    {{--var name = $(e.relatedTarget).data('name');--}}
-    {{--var email = $(e.relatedTarget).data('email');--}}
-
-    {{--$(e.currentTarget).find('input[name="id"]').val(id);--}}
-    {{--$(e.currentTarget).find('input[name="name"]').val(name);--}}
-    {{--$(e.currentTarget).find('input[name="email"]').val(email);--}}
-
-
-    {{--});--}}
+        "columnDefs": [ {
+            "targets": [ 1,2,6 ],
+            "orderable": false
+        } ]
+    });
+    } );
 
 
 
-    {{--</script>--}}
+
+
+    </script>
 
 @endsection
