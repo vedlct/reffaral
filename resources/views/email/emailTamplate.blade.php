@@ -457,7 +457,7 @@
                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td height='40'></td>
+                                                            <td height='20'></td>
                                                         </tr>
                                                         <tr>
                                                             <td style="border: 1px solid #EEEEEE; border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px"><table width="100%" border="0" cellspacing="0" cellpadding="0">

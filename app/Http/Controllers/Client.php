@@ -40,6 +40,7 @@ class Client extends Controller
             $referemail->save();
         }
 
+        return view('email.thankyou');
     }
 
     public function reffaralEmail(){
