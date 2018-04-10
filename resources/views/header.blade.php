@@ -68,8 +68,8 @@
                 </li>
 
 
-                <li @if(Request::url()==Route('email.sendRefferMail') )class="active" @endif>
-                    <a href="{{route('email.sendRefferMail')}}">
+                <li @if(Request::url()==Route('reffaralemail') )class="active" @endif>
+                    <a href="{{route('reffaralemail')}}">
                         <i class="now-ui-icons design_app"></i>
                         <p>Reffer Email</p>
                     </a>

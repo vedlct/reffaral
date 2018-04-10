@@ -35,6 +35,8 @@ Route::get('/Email/sendEmail', 'EmailController@sendEmail')->name('email.sendEma
 
 Route::get('/ShareEmail', 'Client@showRaffaral')->name('shareemail');
 Route::post('/saveemail', 'Client@saveEmail')->name('saveemail');
+Route::get('/ReffaralEmail', 'Client@reffaralEmail')->name('reffaralemail');
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -331,9 +331,10 @@
                                                                                                 <div class='contentEditable' style='text-align: center;'>
 
 
-                                                                                                    <form action="{{route('shareemail')}}" method="post">
+                                                                                                    <form action="{{route('shareemail')}}" method="">
                                                                                                         {{csrf_field()}}
-                                                                                                        <input type="hidden" value="2" name="hiddennumber">
+                                                                                                        <input type="hidden" value="{{$clt}}" name="clt">
+                                                                                                        <input type="hidden" value="{{$offerid}}" name="id">
                                                                                                         <h4 style="font-size: 20px;  min-height: 200px"><pre>{{$text}}</pre></h4>
 
                                                                                                         <button type="submit" class="btn btn-default">Send Invites Now</button>
@@ -359,9 +360,6 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-
-
-
 
                                                     <!-- =============== END BODY =============== -->
                                                     <!-- =============== START FOOTER =============== -->
@@ -496,5 +494,21 @@
                                                         </tbody>
                                                     </table>
                                             <td valign="top" width="20">&nbsp;</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 
 

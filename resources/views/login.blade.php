@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<!-- Mirrored from wrappixel.com/demos/admin-templates/monster-admin/main/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Jan 2018 12:29:41 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +9,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{url('assets/images/favicon.png')}}">
-    <title>LLoyd Baker</title>
+    <title>Reffaral</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{url('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
@@ -49,8 +46,6 @@
                     <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
                 @endif
 
-
-
                 <form class="form-horizontal form-material" method="POST" action="{{ route('login') }}">
                     {!! csrf_field() !!}
                     <h3 class="box-title m-b-20">Sign In</h3>
@@ -86,11 +81,7 @@
                         </div>
                     </div>
 
-
-
                 </form>
-
-
 
             </div>
         </div>
@@ -122,7 +113,4 @@
 <!-- ============================================================== -->
 <script src="{{url('assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
 </body>
-
-
-<!-- Mirrored from wrappixel.com/demos/admin-templates/monster-admin/main/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Jan 2018 12:29:43 GMT -->
 </html>

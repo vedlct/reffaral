@@ -78,11 +78,13 @@
             <div class="formstyle text-center">
                 <form class="form-inline" action="{{route('saveemail')}}" method="post">
                     {{csrf_field()}}
-                    {{$clientid}}
+
+                    <input type="hidden" name="clt" value="{{$clientid}}">
+                    <input type="hidden" name="id" value="{{$sendinfoid}}">
                     <div class='form-group'>
                         <div class='col-lg-12'>
                             <h4 for='example_emailBS' style="color: #1394D2">Lets Share your Email Addresses</h4>
-                            <input type='text' id='example_emailBS' name='example_emailBS' class='form-control' value='["hello@git.com","tom@net.com"]'>
+                            <input type='text' id='example_emailBS' name='example_emailBS' class='form-control' value=''>
                         </div>
                         <div  class='btnsubmit'>
                             <button style="margin-top: 10px; " type="submit" class="btn btn-success">Submit</button>

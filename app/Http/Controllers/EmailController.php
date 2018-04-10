@@ -73,6 +73,8 @@ class EmailController extends Controller
             $SendInfo->datetime = date(now());
             $SendInfo->sentto = $client->clinetinfoid;
             $SendInfo->save();
+            $cid = $client->clinetinfoid;
+            $data=array('text'=>$text, 'clt'=>$cid, 'offerid'=>$SendInfo->sendinfoid);
 
             if ($template == Template[0]){
                 $inviteForDiscount="email.emailTamplate";
@@ -82,6 +84,7 @@ class EmailController extends Controller
 //                $message->from('Techcloud', 'Discount Offer');
                 $message->to($client->email, $client->clientname)->subject('Discount Offer!');
             });
+            array_splice($data, 1, 1);
         }
         Session::flash('message', 'Discount Offer Send successfully');
 
