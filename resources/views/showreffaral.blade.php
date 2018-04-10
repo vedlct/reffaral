@@ -50,18 +50,21 @@
                                     <td>{{$dl->ddate}}</td>
                                     <td>{{$dl->offeramount}}</td>
                                     <td>
-                                        @php
-                                            $s = '';
-                                        @endphp
-                                        @foreach($referemail as $re)
-                                            @if($dl->discountlistid == $re->fkdiscountlistid)
-                                                @php
-                                                    $s .= $re->remail . ',';
-                                                @endphp
-                                                {{substr($s, 0, -1)}}
+                                        {{--@php--}}
+                                            {{--$s = '';--}}
+                                        {{--@endphp--}}
+                                        {{--@foreach($referemail as $re)--}}
+                                            {{--@if($dl->discountlistid == $re->fkdiscountlistid)--}}
+                                                {{--@php--}}
+                                                    {{--$s .= $re->remail. " "." ,";--}}
+                                                {{--@endphp--}}
+                                                {{--{{substr($s, 0, -1)}}--}}
 
-                                            @endif
-                                        @endforeach
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
+                                        @foreach($referemail as $re)
+                                            {{$re->refferedMail}}
+                                            @endforeach
                                     </td>
                                     @php
                                         $count++

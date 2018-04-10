@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Mail;
 use Session;
 
 
+
+
 class EmailController extends Controller
 {
 
@@ -84,7 +86,7 @@ class EmailController extends Controller
 //                $message->from('Techcloud', 'Discount Offer');
                 $message->to($client->email, $client->clientname)->subject('Discount Offer!');
             });
-            
+
         }
         Session::flash('message', 'Discount Offer Send successfully');
 

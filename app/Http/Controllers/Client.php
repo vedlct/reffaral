@@ -6,6 +6,8 @@ use App\Discountlist;
 use App\Referemail;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 class Client extends Controller
 {
     //
@@ -50,7 +52,12 @@ class Client extends Controller
             ->leftjoin('clientinfo','clientinfo.clinetinfoid','=','sendinfo.sentto')
             ->get();
 
-        $referemail = Referemail::select('*', 'referemail.email as remail')->get();
+//        $referemail = Referemail::select('*', 'referemail.email as remail')->get();
+
+
+        $referemail=Referemail::select(DB::raw('GROUP_CONCAT(referemail.email SEPARATOR ",") AS refferedMail'),'fkdiscountlistid')
+            ->groupBy('fkdiscountlistid')->get();
+
         return view('showreffaral')
             ->with('dislist', $discountlist)
             ->with('referemail', $referemail);
