@@ -56,7 +56,11 @@ class Client extends Controller
 
 
         $referemail=Referemail::select(DB::raw('GROUP_CONCAT(referemail.email SEPARATOR ",") AS refferedMail'),'fkdiscountlistid')
+            ->leftjoin('discountlist','discountlist.discountlistid','=','referemail.fkdiscountlistid')
+
             ->groupBy('fkdiscountlistid')->get();
+
+        //return $referemail;
 
         return view('showreffaral')
             ->with('dislist', $discountlist)

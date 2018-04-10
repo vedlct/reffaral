@@ -63,7 +63,9 @@
                                             {{--@endif--}}
                                         {{--@endforeach--}}
                                         @foreach($referemail as $re)
+                                            @if($dl->discountlistid == $re->fkdiscountlistid)
                                             {{$re->refferedMail}}
+                                            @endif
                                             @endforeach
                                     </td>
                                     @php
