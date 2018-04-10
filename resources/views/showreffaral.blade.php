@@ -37,26 +37,31 @@
                             </tr>
                             </thead>
                             <tbody>
+
                             @php
                             $count= 1
                             @endphp
                             @foreach($dislist as $dl)
+                                <tr>
                                <td>{{$count}}</td>
                                <td>{{$dl->clientname}}</td>
                                <td>{{$dl->cemail}}</td>
                                <td>{{$dl->sdate}}</td>
                                <td>{{$dl->ddate}}</td>
                                <td>{{$dl->offeramount}}</td>
-                               <td>@foreach($referemail as $re)
+                               <td>
+                                   @foreach($referemail as $re)
                                    @if($dl->discountlistid == $re->fkdiscountlistid)
                                            {{rtrim($re->remail. " "." ,",',')}}
                                    @endif
                                    @endforeach
                                </td>
                                 @php
-                                 $count= 1
+                                 $count++
                                 @endphp
+                                </tr>
                             @endforeach
+
                             </tbody>
 
                         </table>
