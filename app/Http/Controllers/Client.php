@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Discountlist;
 use App\Referemail;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 
 class Client extends Controller
@@ -40,7 +40,19 @@ class Client extends Controller
             $referemail->email = $value;
             $referemail->fkdiscountlistid = $discountlist->discountlistid;
             $referemail->save();
+
+
+            Mail::send("email.referEmailTamplate", function($message)
+            {
+//                $message->from('Techcloud', 'Discount Offer');
+                $message->to($value, "Tech CLoud ltd")->subject('Discount Offer!');
+            });
+
         }
+
+
+
+
 
         return view('email.thankyou');
     }

@@ -333,11 +333,12 @@
 
                                                                                                     <form action="{{route('shareemail')}}" method="">
                                                                                                         {{csrf_field()}}
-                                                                                                        <input type="hidden" value="{{$clt}}" name="clt">
-                                                                                                        <input type="hidden" value="{{$offerid}}" name="id">
-                                                                                                        <h4 style="font-size: 20px;  min-height: 200px"><pre>{{$text}}</pre></h4>
 
-                                                                                                        <button type="submit" class="btn btn-default">Send Invites Now</button>
+
+                                                                                                       <h4> Congratulation! you got a discount  </h4>
+                                                                                                        <h3>Place order to get the discoun</h3>
+
+                                                                                                        <button type="submit" class="btn btn-default">Order Now</button>
                                                                                                     </form>
 
                                                                                                 </div>
