@@ -326,6 +326,13 @@
                                                                                         <td height='25'></td>
                                                                                     </tr>
                                                                                     <tr>
+                                                                                        <td>{{$dicountCode}}</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>{{$discountStartDate}}</td>
+                                                                                        <td>{{$discountEndDate}}</td>
+                                                                                    </tr>
+                                                                                    <tr>
                                                                                         <td>
                                                                                             <div class='contentEditableContainer contentTextEditable'>
                                                                                                 <div class='contentEditable' style='text-align: center;'>
