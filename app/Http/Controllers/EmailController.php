@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Session;
 
+use Carbon\Carbon;
+
 
 
 
@@ -62,18 +64,34 @@ class EmailController extends Controller
 
         $discount=$r->discount;
         $template=$r->template;
+        $expiryDate=$r->expiryDate;
         $clients=$r->client;
         $text=$r->text;
         $data=array('text'=>$text);
 
+        $month=Carbon::now()->format('m');
+        $date=Carbon::now()->format('d');
+
+
+
 
         foreach ($clients as $clientId) {
+
+            /* for random */
+            $x = 4; // Amount of digits
+            $min = pow(10,$x);
+            $max = pow(10,($x+1)-1);
+            $random = rand($min, $max);
+
+
 
             $client = Clientinfo::findOrFail($clientId);
             $SendInfo = new Sendinfo();
             $SendInfo->offeramount = $discount;
             $SendInfo->datetime = date(now());
             $SendInfo->sentto = $client->clinetinfoid;
+            $SendInfo->discountCode =$month.$date.$client->clinetinfoid.$random;
+            $SendInfo->discountCodeExpiryDate =$expiryDate;
             $SendInfo->save();
             $cid = $client->clinetinfoid;
             $data=array('text'=>$text, 'clt'=>$cid, 'offerid'=>$SendInfo->sendinfoid);
@@ -81,11 +99,11 @@ class EmailController extends Controller
             if ($template == Template[0]){
                 $inviteForDiscount="email.emailTamplate";
             }
-            Mail::send($inviteForDiscount,$data, function($message) use ($client)
-            {
-//                $message->from('Techcloud', 'Discount Offer');
-                $message->to($client->email, $client->clientname)->subject('Discount Offer!');
-            });
+//            Mail::send($inviteForDiscount,$data, function($message) use ($client)
+//            {
+////                $message->from('Techcloud', 'Discount Offer');
+//                $message->to($client->email, $client->clientname)->subject('Discount Offer!');
+//            });
 
         }
         Session::flash('message', 'Discount Offer Send successfully');

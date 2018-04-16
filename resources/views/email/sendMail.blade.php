@@ -26,6 +26,13 @@
                             </div>
 
                         </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="control-label col-md-2">Discount ExpiryDate</label>
+                                <input type="text" class="col-md-8  form-control" id="expiryDate" name="expiryDate" maxlength="20" placeholder="Discount ExpiryDate" >
+                            </div>
+
+                        </div>
 
                         <div class="form-group">
                             <div class="row">
@@ -150,6 +157,7 @@
                         },
                         success: function (data) {
                             location.reload();
+
 
 
                         }
