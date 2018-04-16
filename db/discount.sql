@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2018 at 10:14 AM
+-- Generation Time: Apr 16, 2018 at 10:39 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.1.8
 
@@ -29,17 +29,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `clientinfo` (
   `clinetinfoid` int(11) NOT NULL,
   `clientname` varchar(45) DEFAULT NULL,
-  `email` varchar(128) DEFAULT NULL
+  `email` varchar(128) DEFAULT NULL,
+  `discountByReferorder` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `clientinfo`
 --
 
-INSERT INTO `clientinfo` (`clinetinfoid`, `clientname`, `email`) VALUES
-(1, 'sakib', 'md.sakibrahman@gmail.com'),
-(2, 'rumi', 'mujtaba.rumi1@gmail.com'),
-(3, 'farzad', 'farzadrahman59@gmail.com');
+INSERT INTO `clientinfo` (`clinetinfoid`, `clientname`, `email`, `discountByReferorder`) VALUES
+(1, 'sakib', 'md.sakibrahman@gmail.com', NULL),
+(2, 'rumi', 'mujtaba.rumi1@gmail.com', NULL),
+(3, 'farzad', 'farzadrahman59@gmail.com', NULL);
 
 -- --------------------------------------------------------
 
