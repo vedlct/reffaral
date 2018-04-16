@@ -24,7 +24,7 @@ Route::post('/Email/update', 'EmailController@update')->name('email.update');
 
 
 Route::get('/Email/send', 'EmailController@sendMail')->name('email.send');
-//Route::post('/Email/', 'EmailController@sendMail')->name('email.send');
+
 
 Route::get('/Email/send', 'EmailController@sendMailShow')->name('email.sendMailShow');
 Route::post('/Email/send', 'EmailController@sendMail')->name('email.sendMail');
