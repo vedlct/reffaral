@@ -28,8 +28,15 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label class="control-label col-md-2">Discount ExpiryDate</label>
-                                <input type="text" class="col-md-8  form-control" id="expiryDate" name="expiryDate" maxlength="20" placeholder="Discount ExpiryDate" >
+                                <label class="control-label col-md-2">Discount Start Date</label>
+                                <input type="date" class="col-md-8  form-control" id="discountStartDate" name="discountStartDate"  placeholder="Discount Start Date" >
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="control-label col-md-2">Discount End Date</label>
+                                <input type="date" class="col-md-8  form-control" id="discountEndDate" name="discountEndDate"  placeholder="Discount ExpiryDate" >
                             </div>
 
                         </div>
@@ -135,6 +142,8 @@
             if (client.length >0) {
                 var discount =$('#discount').val();
                 var template =$('#template').val();
+                var discountStartDate =$('#discountStartDate').val();
+                var discountEndDate =$('#discountEndDate').val();
                 if (template ==""){
                     $.alert({
                         title: 'Alert!',
@@ -153,10 +162,13 @@
                             'discount': discount,
                             'template': template,
                             'client': client,
-                            'text': text
+                            'text': text,
+                            'discountStartDate':discountStartDate,
+                            'discountEndDate':discountEndDate,
                         },
                         success: function (data) {
-                            location.reload();
+                           location.reload();
+                            //alert(data);
 
 
 
