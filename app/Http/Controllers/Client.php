@@ -35,17 +35,17 @@ class Client extends Controller
         $discountlist->datetime= date(now());
         $discountlist->save();
 
+        $data=array('discountcode'=>"0123");
         foreach ($a as $value){
             $referemail = new Referemail();
             $referemail->email = $value;
             $referemail->fkdiscountlistid = $discountlist->discountlistid;
             $referemail->save();
 
-
-            Mail::send("email.referEmailTamplate", function($message)
+            Mail::send("email.referEmailTamplate",$data, function($message) use ($value)
             {
 //                $message->from('Techcloud', 'Discount Offer');
-                $message->to($value, "Tech CLoud ltd")->subject('Discount Offer!');
+                $message->to( $value, "Tech CLoud ltd")->subject('Discount Offer!');
             });
 
         }
@@ -74,6 +74,10 @@ class Client extends Controller
         return view('showreffaral')
             ->with('dislist', $discountlist)
             ->with('referemail', $referemail);
+
+    }
+
+    public function OrderView(){
 
     }
 }
