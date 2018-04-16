@@ -30,6 +30,8 @@
 <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{url('public/assets/demo/demo.js')}}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+
 <script>
     var ckBaseUrl = "{{url('')}}";
 </script>

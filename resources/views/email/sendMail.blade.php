@@ -22,7 +22,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <label class="control-label col-md-2">Discount</label>
-                                <input type="text" class="col-md-8  form-control" id="discount" name="discount" placeholder="Discount Amount" >
+                                <input type="text" class="col-md-8  form-control" id="discount" name="discount" maxlength="20" placeholder="Discount Amount" >
                             </div>
 
                         </div>
@@ -45,8 +45,9 @@
                         <div class="form-group">
                             <div class="row">
                                 <label class="control-label col-md-2 " for="exampleInputEmail">Text</label>
-
+                                <div class="col-md-8">
                                 <textarea class="form-control ckeditor" id="text" name="text" rows="6"></textarea>
+                                </div>
 
                             </div>
                         </div>
@@ -127,20 +128,33 @@
             if (client.length >0) {
                 var discount =$('#discount').val();
                 var template =$('#template').val();
-                var text = CKEDITOR.instances['text'].getData();
+                if (template ==""){
+                    $.alert({
+                        title: 'Alert!',
+                        content: 'Please Select a Template First!',
+                    });
+                }else {
+                    var text = CKEDITOR.instances['text'].getData();
 
-                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-                $.ajax({
-                    type: 'POST',
-                    url: "{!!route('email.sendMail') !!}",
-                    cache: false,
-                    data: {_token: CSRF_TOKEN,'discount': discount,'template':template,'client':client,'text':text},
-                    success: function (data) {
-                        location.reload();
+                    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        type: 'POST',
+                        url: "{!!route('email.sendMail') !!}",
+                        cache: false,
+                        data: {
+                            _token: CSRF_TOKEN,
+                            'discount': discount,
+                            'template': template,
+                            'client': client,
+                            'text': text
+                        },
+                        success: function (data) {
+                            location.reload();
 
 
-                    }
-                });
+                        }
+                    });
+                }
             }
             else {
                 alert("Please Select a Client first");
