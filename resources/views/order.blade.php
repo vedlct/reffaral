@@ -79,7 +79,7 @@
                     <div class="formstyle">
 
 
-                        <form class="form-horizontal" action="/action_page.php">
+                        <form class="form-horizontal" action="{{route('ordersave')}}">
                             <div class="form-group">
                                 <label class="control-label col-sm-3" for="email">Your Name:</label>
                                 <div class="col-sm-6">

@@ -345,9 +345,8 @@
                                                                                                        <h3> Congratulation! you got a discount  </h3>
                                                                                                         <h4>Place order to get the discoun</h4>
 
-                                                                                                        <input type="text" name="discountcode" value="{{$discountcode}}"/>
-                                                                                                        <input type="text" name="codeStratDate" value="{{$codeStartDate}}"/>
-                                                                                                        <input type="text" name="codeEndDate" value="{{$codeEndDate}}"/>
+                                                                                                        <input type="text" name="refermailid" value="{{$referemailid}}"/>
+                                                                                                        <input type="text" name="clientid" value="{{$clientid}}"/>
 
                                                                                                         <button type="submit" class="btn btn-default">Order Now</button>
                                                                                                     </form>
