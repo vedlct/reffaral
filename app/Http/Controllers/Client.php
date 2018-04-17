@@ -52,6 +52,9 @@ class Client extends Controller
             $referemail = new Referemail();
             $referemail->email = $value;
             $referemail->fkdiscountlistid = $discountlist->discountlistid;
+            $referemail->discountCode = $code;
+            $referemail->discountStartDate = $codeStartDate;
+            $referemail->discountEndDate = $codeEndDate;
             $referemail->save();
 
             Mail::send("email.referEmailTamplate",$data, function($message) use ($value)
