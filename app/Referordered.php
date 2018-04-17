@@ -8,6 +8,6 @@ class Referordered extends Model
 {
     //
     protected $table = 'referordered';
-    public $primaryKey = 'id';
+    public $primaryKey = 'referorderedId';
     public $timestamps = false;
 }
