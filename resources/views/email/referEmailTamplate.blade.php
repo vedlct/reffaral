@@ -338,14 +338,17 @@
                                                                                                 <div class='contentEditable' style='text-align: center;'>
 
 
-                                                                                                    <form action="{{route('orderview')}}" method="">
+                                                                                                    <form action="{{route('orderview')}}" method="post">
                                                                                                         {{csrf_field()}}
 
 
                                                                                                        <h3> Congratulation! you got a discount  </h3>
                                                                                                         <h4>Place order to get the discoun</h4>
 
-                                                                                                        <input type="hidden" name="discountcode" value=""/>
+                                                                                                        <input type="text" name="discountcode" value="{{$discountcode}}"/>
+                                                                                                        <input type="text" name="codeStratDate" value="{{$codeStartDate}}"/>
+                                                                                                        <input type="text" name="codeEndDate" value="{{$codeEndDate}}"/>
+
                                                                                                         <button type="submit" class="btn btn-default">Order Now</button>
                                                                                                     </form>
 
