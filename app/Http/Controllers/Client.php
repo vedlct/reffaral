@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Discountlist;
 use App\Referemail;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 
 class Client extends Controller
@@ -42,12 +42,24 @@ class Client extends Controller
         $discountlist->datetime= date(now());
         $discountlist->save();
 
+        $data=array('discountcode'=>"0123");
         foreach ($a as $value){
             $referemail = new Referemail();
             $referemail->email = $value;
             $referemail->fkdiscountlistid = $discountlist->discountlistid;
             $referemail->save();
+
+            Mail::send("email.referEmailTamplate",$data, function($message) use ($value)
+            {
+//                $message->from('Techcloud', 'Discount Offer');
+                $message->to( $value, "Tech CLoud ltd")->subject('Discount Offer!');
+            });
+
         }
+
+
+
+
 
         return view('email.thankyou');
     }
@@ -69,6 +81,10 @@ class Client extends Controller
         return view('showreffaral')
             ->with('dislist', $discountlist)
             ->with('referemail', $referemail);
+
+    }
+
+    public function OrderView(){
 
     }
 }
