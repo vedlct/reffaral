@@ -96,4 +96,9 @@ class Client extends Controller
 
         return view('order');
     }
+
+    public function ordersave(Request $r){
+
+
+    }
 }
