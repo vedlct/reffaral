@@ -315,6 +315,13 @@
                                                                 <td height="20"></td>
                                                             </tr>
                                                             <tr>
+                                                                <td>{{$discountcode}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>{{$codeStartDate}}</td>
+                                                                <td>{{$codeEndDate}}</td>
+                                                            </tr>
+                                                            <tr>
                                                                 <td style="background:#fff; border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px">
                                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                                         <tbody>
