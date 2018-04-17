@@ -100,14 +100,23 @@ class EmailController extends Controller
             if ($template == Template[0]){
                 $inviteForDiscount="email.emailTamplate";
             }
-            Mail::send($inviteForDiscount,$data, function($message) use ($client)
-            {
-//                $message->from('rumi@techcloudltd.com', 'Discount Offer');
-                $message->to($client->email, $client->clientname)->subject('Discount Offer!');
-            });
+//            try{
 
+                Mail::send($inviteForDiscount,$data, function($message) use ($client)
+                {
+
+                    $message->to($client->email, $client->clientname)->subject('Discount Offer!');
+                });
+
+
+//            }catch (Exception $e){
+//
+//                Session::flash('message', 'Discount Offer Mail not Send!!');
+//
+//            }
         }
         Session::flash('message', 'Discount Offer Send successfully');
+
 
     }
 

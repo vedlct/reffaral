@@ -149,7 +149,16 @@
                         title: 'Alert!',
                         content: 'Please Select a Template First!',
                     });
-                }else {
+                }
+                else if(discountEndDate < discountStartDate ){
+
+                    $.alert({
+                        title: 'Alert!',
+                        content: 'Discount End Date must be after the Start Date!',
+                    });
+
+                }
+                else {
                     var text = CKEDITOR.instances['text'].getData();
 
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
