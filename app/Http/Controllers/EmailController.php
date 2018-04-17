@@ -102,7 +102,7 @@ class EmailController extends Controller
             }
             Mail::send($inviteForDiscount,$data, function($message) use ($client)
             {
-//                $message->from('Techcloud', 'Discount Offer');
+//                $message->from('rumi@techcloudltd.com', 'Discount Offer');
                 $message->to($client->email, $client->clientname)->subject('Discount Offer!');
             });
 

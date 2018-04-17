@@ -16,8 +16,15 @@ class Client extends Controller
 
         $clientId =  $r->clt;
         $sendinfoid = $r->id;
+        $code = $r->disCode;
+        $codeStartDate = $r->disStartDate;
+        $codeEndDate = $r->disEndDate;
+
         return view('clintside')
             ->with('clientid', $clientId)
+            ->with('code', $code)
+            ->with('startDate', $codeStartDate)
+            ->with('endDate', $codeEndDate)
             ->with('sendinfoid', $sendinfoid);
     }
 
@@ -27,6 +34,11 @@ class Client extends Controller
         $offerid= $r->id;
         $clientId= $r->clt;
 
+        $code = $r->code;
+        $codeStartDate = $r->startDate;
+        $codeEndDate = $r->endDate;
+
+
         $email =  $r->example_emailBS;
         $a = json_decode( $email, true );
 
@@ -35,7 +47,7 @@ class Client extends Controller
         $discountlist->datetime= date(now());
         $discountlist->save();
 
-        $data=array('discountcode'=>"0123");
+        $data=array('discountcode'=>$code,'codeStartDate'=>$codeStartDate,'codeEndDate'=>$codeEndDate,);
         foreach ($a as $value){
             $referemail = new Referemail();
             $referemail->email = $value;

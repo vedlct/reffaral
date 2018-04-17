@@ -338,12 +338,14 @@
                                                                                                 <div class='contentEditable' style='text-align: center;'>
 
 
-                                                                                                    <form action="{{route('shareemail')}}" method="">
+                                                                                                    <form action="{{route('shareemail')}}" method="post">
                                                                                                         {{csrf_field()}}
                                                                                                         <input type="hidden" value="{{$clt}}" name="clt">
+                                                                                                        <input type="hidden" value="{{$dicountCode}}" name="disCode">
+                                                                                                        <input type="hidden" value="{{$discountStartDate}}" name="disStartDate">
+                                                                                                        <input type="hidden" value="{{$discountEndDate}}" name="disEndDate">
                                                                                                         <input type="hidden" value="{{$offerid}}" name="id">
                                                                                                         <h4 style="font-size: 20px;  min-height: 200px"><pre>{{$text}}</pre></h4>
-
                                                                                                         <button type="submit" class="btn btn-default">Send Invites Now</button>
                                                                                                     </form>
 
