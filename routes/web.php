@@ -39,8 +39,8 @@ Route::get('/ReffaralEmail', 'Client@reffaralEmail')->name('reffaralemail');
 Route::get('/ReffaralOrderList', 'Client@reffaralOrderList')->name('reffaralOrderList');
 
 
-Route::get('/order', 'Client@OrderView')->name('orderview');
-Route::get('/order/submit', 'Client@OrderSubmit')->name('order');
+Route::post('/order', 'Client@OrderView')->name('orderview');
+Route::post('/order/submit', 'Client@OrderSubmit')->name('ordersave');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

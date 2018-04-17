@@ -48,7 +48,7 @@ class Client extends Controller
         $discountlist->datetime= date(now());
         $discountlist->save();
 
-        $data=array('discountcode'=>$code,'codeStartDate'=>$codeStartDate,'codeEndDate'=>$codeEndDate,);
+
         foreach ($a as $value){
             $referemail = new Referemail();
             $referemail->email = $value;
@@ -57,10 +57,10 @@ class Client extends Controller
             $referemail->discountStartDate = $codeStartDate;
             $referemail->discountEndDate = $codeEndDate;
             $referemail->save();
-
+            $data=array('discountcode'=>$code,'codeStartDate'=>$codeStartDate,'codeEndDate'=>$codeEndDate,'referemailid'=>$referemail->id, 'clientid'=>$clientId );
             Mail::send("email.referEmailTamplate",$data, function($message) use ($value)
             {
-//                $message->from('Techcloud', 'Discount Offer');
+
                 $message->to( $value, "Tech CLoud ltd")->subject('Discount Offer!');
             });
 
@@ -81,6 +81,7 @@ class Client extends Controller
             ->leftjoin('discountlist','discountlist.discountlistid','=','referemail.fkdiscountlistid')
             ->groupBy('fkdiscountlistid')->get();
 
+        //return $referemail;
 
         return view('showreffaral')
             ->with('dislist', $discountlist)
@@ -88,14 +89,31 @@ class Client extends Controller
 
     }
 
-    public function OrderView(){
+    public function OrderView(Request $r){
 
-        return view('order');
+
+        return view('order')
+            ->with('refermailid',$r->refermailid)
+            ->with('clientid', $r->clientid);
+
     }
 
-    public function ordersave(Request $r){
+    public function OrderSubmit(Request $r){
 
 
+        $referorder = new Referordered();
+
+        $referorder->name = $r->name;
+        $referorder->email = $r->email;
+        $referorder->cname = $r->companyname;
+        $referorder->message = $r->message;
+        $referorder->referemailId = $r->refermailid;
+        $referorder->clientId = $r->clientid;
+        $referorder->referorderedDate = date(now());
+        $referorder->save();
+
+
+        return view('email.orderthankyou');
     }
     public function reffaralOrderList(){
 
