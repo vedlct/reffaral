@@ -331,13 +331,14 @@
                                                                                                 <div class='contentEditable' style='text-align: center;'>
 
 
-                                                                                                    <form action="{{route('shareemail')}}" method="">
+                                                                                                    <form action="{{route('orderview')}}" method="">
                                                                                                         {{csrf_field()}}
 
 
-                                                                                                       <h4> Congratulation! you got a discount  </h4>
-                                                                                                        <h3>Place order to get the discoun</h3>
+                                                                                                       <h3> Congratulation! you got a discount  </h3>
+                                                                                                        <h4>Place order to get the discoun</h4>
 
+                                                                                                        <input type="hidden" name="discountcode" value=""/>
                                                                                                         <button type="submit" class="btn btn-default">Order Now</button>
                                                                                                     </form>
 
