@@ -38,8 +38,8 @@ Route::post('/saveemail', 'Client@saveEmail')->name('saveemail');
 Route::get('/ReffaralEmail', 'Client@reffaralEmail')->name('reffaralemail');
 
 
-Route::get('/order', 'Client@OrderView')->name('orderview');
-Route::get('/order/submit', 'Client@OrderSubmit')->name('ordersave');
+Route::post('/order', 'Client@OrderView')->name('orderview');
+Route::post('/order/submit', 'Client@OrderSubmit')->name('ordersave');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

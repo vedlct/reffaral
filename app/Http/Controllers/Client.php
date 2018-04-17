@@ -57,7 +57,7 @@ class Client extends Controller
             $referemail->discountStartDate = $codeStartDate;
             $referemail->discountEndDate = $codeEndDate;
             $referemail->save();
-            $data=array('referemailid'=>$referemail->id, 'clientid'=>$clientId );
+            $data=array('discountcode'=>$code,'codeStartDate'=>$codeStartDate,'codeEndDate'=>$codeEndDate,'referemailid'=>$referemail->id, 'clientid'=>$clientId );
             Mail::send("email.referEmailTamplate",$data, function($message) use ($value)
             {
 
@@ -85,6 +85,7 @@ class Client extends Controller
             ->leftjoin('discountlist','discountlist.discountlistid','=','referemail.fkdiscountlistid')
             ->groupBy('fkdiscountlistid')->get();
 
+        //return $referemail;
 
         return view('showreffaral')
             ->with('dislist', $discountlist)
@@ -95,7 +96,9 @@ class Client extends Controller
     public function OrderView(Request $r){
 
 
-        return view('order');
+        return view('order')
+            ->with('refermailid',$r->refermailid)
+            ->with('clientid', $r->clientid);
 
     }
 
@@ -106,7 +109,7 @@ class Client extends Controller
 
         $referorder->name = $r->name;
         $referorder->email = $r->email;
-        $referorder->cname = $r->comapnyname;
+        $referorder->cname = $r->companyname;
         $referorder->message = $r->message;
         $referorder->referemailId = $r->refermailid;
         $referorder->clientId = $r->clientid;
@@ -114,5 +117,6 @@ class Client extends Controller
         $referorder->save();
 
 
+        return view('email.orderthankyou');
     }
 }
