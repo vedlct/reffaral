@@ -75,6 +75,12 @@
                         <p>Reffer Email</p>
                     </a>
                 </li>
+                <li @if(Request::url()==Route('reffaralOrderList') )class="active" @endif>
+                    <a href="{{route('reffaralOrderList')}}">
+                        <i class="now-ui-icons design_app"></i>
+                        <p>Reffer Order List</p>
+                    </a>
+                </li>
 
 
             </ul>

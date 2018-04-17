@@ -8,6 +8,7 @@ use App\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use League\Flysystem\Exception;
 use Session;
 
 use Carbon\Carbon;
@@ -78,44 +79,37 @@ class EmailController extends Controller
 
 
 
+            foreach ($clients as $clientId) {
 
-        foreach ($clients as $clientId) {
-
-            $random = rand(1000,9999);
+                $random = rand(1000, 9999);
 
 
-            $client = Clientinfo::findOrFail($clientId);
-            $SendInfo = new Sendinfo();
-            $SendInfo->offeramount = $discount;
-            $SendInfo->datetime = date(now());
-            $SendInfo->sentto = $client->clinetinfoid;
-            $randomDiscountCode=$month.$date.$client->clinetinfoid.$random;
-            $SendInfo->discountCode =$randomDiscountCode;
-            $SendInfo->discountStartDate =$discountStartDate;
-            $SendInfo->discountEndDate =$discountEndDate;
-            $SendInfo->save();
-            $cid = $client->clinetinfoid;
-            $data=array('text'=>$text,'clt'=>$cid,'dicountCode'=>$randomDiscountCode,'discountStartDate'=>$discountStartDate,'discountEndDate'=>$discountEndDate,'offerid'=>$SendInfo->sendinfoid);
+                $client = Clientinfo::findOrFail($clientId);
+                $SendInfo = new Sendinfo();
+                $SendInfo->offeramount = $discount;
+                $SendInfo->datetime = date(now());
+                $SendInfo->sentto = $client->clinetinfoid;
+                $randomDiscountCode = $month . $date . $client->clinetinfoid . $random;
+                $SendInfo->discountCode = $randomDiscountCode;
+                $SendInfo->discountStartDate = $discountStartDate;
+                $SendInfo->discountEndDate = $discountEndDate;
+                $SendInfo->save();
+                $cid = $client->clinetinfoid;
+                $data = array('text' => $text, 'clt' => $cid, 'dicountCode' => $randomDiscountCode, 'discountStartDate' => $discountStartDate, 'discountEndDate' => $discountEndDate, 'offerid' => $SendInfo->sendinfoid);
 
-            if ($template == Template[0]){
-                $inviteForDiscount="email.emailTamplate";
-            }
-//            try{
+                if ($template == Template[0]) {
+                    $inviteForDiscount = "email.emailTamplate";
+                }
 
-                Mail::send($inviteForDiscount,$data, function($message) use ($client)
-                {
+
+                Mail::send($inviteForDiscount, $data, function ($message) use ($client) {
 
                     $message->to($client->email, $client->clientname)->subject('Discount Offer!');
                 });
 
+            }
+            Session::flash('message', 'Discount Offer Send successfully');
 
-//            }catch (Exception $e){
-//
-//                Session::flash('message', 'Discount Offer Mail not Send!!');
-//
-//            }
-        }
-        Session::flash('message', 'Discount Offer Send successfully');
 
 
     }

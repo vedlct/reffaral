@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Discountlist;
 use App\Referemail;
+use App\Referordered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
@@ -65,10 +66,6 @@ class Client extends Controller
 
         }
 
-
-
-
-
         return view('email.thankyou');
     }
 
@@ -98,6 +95,20 @@ class Client extends Controller
 
     public function ordersave(Request $r){
 
+
+    }
+    public function reffaralOrderList(){
+
+        $orderlist = Referordered::select('referordered.referorderedId','referordered.referemailId','referordered.referorderedDate',
+            'referordered.clientId','referemail.discountCode','clientinfo.email as clientEmail','referordered.name','referordered.email',
+            'referordered.cname','sendinfo.offeramount')
+            ->leftjoin('referemail','referemail.id','=','referordered.referemailId')
+            ->leftjoin('clientinfo','clientinfo.clinetinfoid','=','referordered.clientId')
+            ->leftjoin('discountlist','discountlist.discountlistid','=','referemail.fkdiscountlistid')
+            ->leftjoin('sendinfo','sendinfo.sendinfoid','=','discountlist.fksendinfoid')
+            ->get();
+
+        return view('showReffaralOrder',compact('orderlist'));
 
     }
 }

@@ -44,8 +44,7 @@
                                             <a href="#target_user_modal" data-toggle="modal" class="btn btn-info btn-sm"
                                                data-id="{{$client->clinetinfoid}}"
                                                data-name="{{$client->clientname}}"
-                                               data-email="{{$client->email}}"
-                                            >
+                                               data-email="{{$client->email}}">
                                                 <i class="fas fa-edit"></i></a>
                                             <button class="btn btn-danger btn-sm" ><i class="fas fa-trash-alt"></i></button>
                                         </form>

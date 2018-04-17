@@ -36,6 +36,7 @@ Route::get('/Email/sendEmail', 'EmailController@sendEmail')->name('email.sendEma
 Route::post('/ShareEmail', 'Client@showRaffaral')->name('shareemail');
 Route::post('/saveemail', 'Client@saveEmail')->name('saveemail');
 Route::get('/ReffaralEmail', 'Client@reffaralEmail')->name('reffaralemail');
+Route::get('/ReffaralOrderList', 'Client@reffaralOrderList')->name('reffaralOrderList');
 
 
 Route::get('/order', 'Client@OrderView')->name('orderview');
