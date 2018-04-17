@@ -84,7 +84,6 @@ class Client extends Controller
             ->leftjoin('discountlist','discountlist.discountlistid','=','referemail.fkdiscountlistid')
             ->groupBy('fkdiscountlistid')->get();
 
-        //return $referemail;
 
         return view('showreffaral')
             ->with('dislist', $discountlist)
