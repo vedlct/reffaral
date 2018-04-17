@@ -16,8 +16,15 @@ class Client extends Controller
 
         $clientId =  $r->clt;
         $sendinfoid = $r->id;
+        $code = $r->disCode;
+        $codeStartDate = $r->disStartDate;
+        $codeEndDate = $r->disEndDate;
+
         return view('clintside')
             ->with('clientid', $clientId)
+            ->with('code', $code)
+            ->with('startDate', $codeStartDate)
+            ->with('endDate', $codeEndDate)
             ->with('sendinfoid', $sendinfoid);
     }
 

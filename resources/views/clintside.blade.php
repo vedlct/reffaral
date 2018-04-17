@@ -81,6 +81,9 @@
 
                     <input type="hidden" name="clt" value="{{$clientid}}">
                     <input type="hidden" name="id" value="{{$sendinfoid}}">
+                    <input type="hidden" name="code" value="{{$code}}">
+                    <input type="hidden" name="startDate" value="{{$startDate}}">
+                    <input type="hidden" name="endDate" value="{{$endDate}}">
                     <div class='form-group'>
                         <div class='col-lg-12'>
                             <h4 for='example_emailBS' style="color: #1394D2">Lets Share your Email Addresses</h4>
