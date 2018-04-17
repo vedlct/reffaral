@@ -79,5 +79,6 @@ class Client extends Controller
 
     public function OrderView(){
 
+        return view('order');
     }
 }
