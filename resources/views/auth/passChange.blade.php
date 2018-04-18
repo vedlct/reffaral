@@ -27,7 +27,7 @@
 
                 <div class="form-group col-md-6">
                     <label for="pwd">Confirm Password:</label>
-                    <input type="password" class="form-control" id="password_confirm" >
+                    <input type="password" class="form-control" id="confirm_password" >
                 </div>
                 <div id="message"></div>
                 <button type="submit" class="btn btn-success">change</button>
@@ -44,12 +44,20 @@
 @section('foot-js')
     <script>
 
-        $('#password, #password_confirm').on('keyup', function () {
-            if ($('#password').val() == $('#confirm_password').val()) {
-                $('#message').html('Matching').css('color', 'green');
-            } else
-                $('#message').html('Not Matching').css('color', 'red');
+        $( document ).ready(function() {
+
+            $('#password,#confirm_password').bind('input',function() {
+
+
+                if ($('#password').val() == $('#confirm_password').val()) {
+                $('#message').html('Matched').css('color', 'green');
+
+                } else
+                    $('#message').html('Not Matched').css('color', 'red');
+            });
+
         });
+
     </script>
 
 
