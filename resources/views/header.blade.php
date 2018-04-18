@@ -83,12 +83,7 @@
                 </li>
 
 
-                <li @if(Request::url()==Route('password') )class="active" @endif>
-                    <a href="{{route('password')}}">
-                        <i class="now-ui-icons design_app"></i>
-                        <p>Change Password</p>
-                    </a>
-                </li>
+                
 
 
 

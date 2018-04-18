@@ -2,9 +2,9 @@
 
 
 @section('content')
-
     <div class="panel-header panel-header-sm">
     </div>
+    <div class="content">
 
     <div class="card">
         <div class="card-header">
@@ -34,7 +34,7 @@
             </form>
         </div>
     </div>
-
+    </div>
 
 
 
