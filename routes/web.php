@@ -44,3 +44,6 @@ Route::post('/order/submit', 'Client@OrderSubmit')->name('ordersave');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+//Change Pass
+Route::get('/password', 'HomeController@password')->name('password');
+Route::post('/password', 'HomeController@changepassword')->name('changepassword');
