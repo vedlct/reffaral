@@ -15,9 +15,6 @@
         th{
             text-align: center;
         }
-        /*tr:nth-child(even) {*/
-        /*background-color: #dddddd;*/
-        /*}*/
     </style>
 </head>
 <body>
@@ -27,35 +24,36 @@
     <table>
 
         <tr>
-            <td>Company Name:</td>
+            <td>Name:</td>
             <td>{{$name}}</td>
         </tr>
         <tr>
-            <td>Company Email:</td>
+            <td> Email:</td>
             <td>{{$email}}</td>
         </tr>
         <tr>
-            <td>Phone Number:</td>
-            <td>{{$number}}</td>
+            <td>Company Name:</td>
+            <td>{{$cname}}</td>
         </tr>
+
         <tr>
             <td>Message</td>
-            <td>{{$logoShape}}</td>
+            <td>{{$sms}}</td>
         </tr>
 
         <tr>
             <td>Discount</td>
-            <td>{{$logoShape}}</td>
+            <td>{{$discountcode}}</td>
         </tr>
 
         <tr>
             <td>Start Date</td>
-            <td>{{$logoShape}}</td>
+            <td>{{$codeStartDate}}</td>
         </tr>
 
         <tr>
             <td>End Date</td>
-            <td>{{$logoShape}}</td>
+            <td>{{$codeEndDate}}</td>
         </tr>
 
     </table>

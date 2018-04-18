@@ -295,7 +295,7 @@
 
                                                         <tr>
                                                             <td valign="top" width="580"><div class='contentEditableContainer contentImageEditable'>
-                                                                    <div class='contentEditable' style="text-align: center;"><img class="banner" src="{{url('public/img/image2.jpg')}}" alt="Logo" title="Logo" width="580" height="55" border="0"></div></div></td>
+                                                                    <div class='contentEditable' style="text-align: center;"><img class="banner" src="{{url('public/img/ordernow.jpg')}}" alt="Logo" title="Logo" width="580" height="55" border="0"></div></div></td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -311,16 +311,7 @@
                                                     <div class="movableContent" style="border: 0px; padding-top: 0px; position: relative;">
                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tbody>
-                                                            <tr>
-                                                                <td height="20"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>{{$discountcode}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>{{$codeStartDate}}</td>
-                                                                <td>{{$codeEndDate}}</td>
-                                                            </tr>
+
                                                             <tr>
                                                                 <td style="background:#fff; border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px">
                                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -341,12 +332,13 @@
                                                                                                     <form action="{{route('orderview')}}" method="post">
                                                                                                         {{csrf_field()}}
 
-
-                                                                                                       <h3> Congratulation! you got a discount  </h3>
+                                                                                                       <h3> Congratulation! you got a discount from {{$cemail}}  </h3>
+                                                                                                        <h5>your discount code is <span style="color: red;">{{$discountcode}}</span></h5>
                                                                                                         <h4>Place order to get the discoun</h4>
 
-                                                                                                        <input type="text" name="refermailid" value="{{$referemailid}}"/>
-                                                                                                        <input type="text" name="clientid" value="{{$clientid}}"/>
+                                                                                                        <input type="hidden" name="refermailid" value="{{$referemailid}}"/>
+                                                                                                        <input type="hidden" name="discountcode" value="{{$discountcode}}"/>
+                                                                                                        <input type="hidden" name="clientid" value="{{$clientid}}"/>
 
                                                                                                         <button type="submit" class="btn btn-default">Order Now</button>
                                                                                                     </form>

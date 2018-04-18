@@ -105,6 +105,12 @@
                                     <textarea class="form-control" rows="5" name="message" id="comment"></textarea>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="pwd">Discount COde: </label>
+                                <div class="col-sm-6">
+                                    <input type="name" class="form-control" name="companyname" id="pwd" value="{{$discountcode}}" placeholder="" readonly>
+                                </div>
+                            </div>
 
                             <input type="hidden" name="refermailid" value="{{$refermailid}}">
                             <input type="hidden" name="clientid" value="{{$clientid}}">

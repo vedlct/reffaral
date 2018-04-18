@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Clientinfo;
 use App\Discountlist;
 use App\Referemail;
 use App\Referordered;
@@ -49,6 +50,8 @@ class Client extends Controller
         $discountlist->save();
 
 
+        $cemail = Clientinfo::findOrFail($clientId);
+
         foreach ($a as $value){
             $referemail = new Referemail();
             $referemail->email = $value;
@@ -57,7 +60,7 @@ class Client extends Controller
             $referemail->discountStartDate = $codeStartDate;
             $referemail->discountEndDate = $codeEndDate;
             $referemail->save();
-            $data=array('discountcode'=>$code,'codeStartDate'=>$codeStartDate,'codeEndDate'=>$codeEndDate,'referemailid'=>$referemail->id, 'clientid'=>$clientId );
+            $data=array('discountcode'=>$code,'codeStartDate'=>$codeStartDate,'codeEndDate'=>$codeEndDate,'referemailid'=>$referemail->id, 'clientid'=>$clientId, 'cemail'=>$cemail->email );
             Mail::send("email.referEmailTamplate",$data, function($message) use ($value)
             {
 
@@ -94,6 +97,7 @@ class Client extends Controller
 
         return view('order')
             ->with('refermailid',$r->refermailid)
+            ->with('discountcode',$r->discountcode)
             ->with('clientid', $r->clientid);
 
     }
@@ -111,6 +115,26 @@ class Client extends Controller
         $referorder->clientId = $r->clientid;
         $referorder->referorderedDate = date(now());
         $referorder->save();
+
+
+        $dis = Referemail::findOrFail($r->refermailid);
+        $data=array(
+
+            'discountcode'=>$dis->discountCode,
+            'codeStartDate'=>$dis->discountStartDate,
+            'codeEndDate'=>$dis->discountEndDate,
+            'name'=>$r->name,
+            'email'=>$r->email,
+            'cname'=>$r->companyname,
+            'sms'=>$r->message
+
+        );
+
+        Mail::send("email.orderemail",$data, function($message)
+        {
+
+            $message->to( Admin_email, "Tech CLoud ltd")->subject('Discount Offer!');
+        });
 
         return view('email.orderthankyou');
     }
