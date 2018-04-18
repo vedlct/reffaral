@@ -29,25 +29,28 @@
                     <label for="pwd">Confirm Password:</label>
                     <input type="password" class="form-control" id="password_confirm" >
                 </div>
+                <div id="message"></div>
                 <button type="submit" class="btn btn-success">change</button>
             </form>
         </div>
     </div>
 
-    <script>
 
-        jQuery('#validatedForm').validate({
-            rules : {
-                password : {
-                    minlength : 5
-                },
-                password_confirm : {
-                    minlength : 5,
-                    equalTo : '[name="password"]'
-                }
-            }
-        );
-    </script>
 
 
     @endsection
+
+
+@section('foot-js')
+    <script>
+
+        $('#password, #password_confirm').on('keyup', function () {
+            if ($('#password').val() == $('#confirm_password').val()) {
+                $('#message').html('Matching').css('color', 'green');
+            } else
+                $('#message').html('Not Matching').css('color', 'red');
+        });
+    </script>
+
+
+@endsection
