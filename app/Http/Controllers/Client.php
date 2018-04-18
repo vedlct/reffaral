@@ -112,9 +112,9 @@ class Client extends Controller
         $referorder->referorderedDate = date(now());
         $referorder->save();
 
-
         return view('email.orderthankyou');
     }
+
     public function reffaralOrderList(){
 
         $orderlist = Referordered::select('referordered.referorderedId','referordered.referemailId','referordered.referorderedDate',
