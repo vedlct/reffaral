@@ -44,6 +44,7 @@ class Client extends Controller
         $email =  $r->example_emailBS;
         $a = json_decode( $email, true );
 
+
         $discountlist = new Discountlist();
         $discountlist->fksendinfoid= $offerid;
         $discountlist->datetime= date(now());

@@ -331,8 +331,8 @@
                                                                                                 <div class='contentEditable' style='text-align: center;'>
 
 
-                                                                                                    <form action="{{route('shareemail')}}" method="post">
-                                                                                                        {{csrf_field()}}
+                                                                                                    <form action="{{route('shareemail')}}" method="get">
+{{--                                                                                                        {{csrf_field()}}--}}
                                                                                                         <input type="hidden" value="{{$clt}}" name="clt">
                                                                                                         <input type="hidden" value="{{$dicountCode}}" name="disCode">
                                                                                                         <input type="hidden" value="{{$discountStartDate}}" name="disStartDate">

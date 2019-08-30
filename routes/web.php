@@ -33,7 +33,7 @@ Route::post('/Email/send', 'EmailController@sendMail')->name('email.sendMail');
 Route::get('/Email/sendRefferEmail', 'EmailController@sendRefferEmail')->name('email.sendRefferMail');
 Route::get('/Email/sendEmail', 'EmailController@sendEmail')->name('email.sendEmail');
 
-Route::post('/ShareEmail', 'Client@showRaffaral')->name('shareemail');
+Route::get('/ShareEmail', 'Client@showRaffaral')->name('shareemail');
 Route::post('/saveemail', 'Client@saveEmail')->name('saveemail');
 Route::get('/ReffaralEmail', 'Client@reffaralEmail')->name('reffaralemail');
 Route::get('/ReffaralOrderList', 'Client@reffaralOrderList')->name('reffaralOrderList');
