@@ -81,12 +81,7 @@
 
                         <form class="form-horizontal" action="{{route('ordersave')}}" method="post">
                             {{csrf_field()}}
-                            <div class="form-group">
-                                <label class="control-label col-sm-3" for="email">Your Name:</label>
-                                <div class="col-sm-6">
-                                    <input type="name" class="form-control" name="name" id="email" placeholder="">
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <label class="control-label col-sm-3" for="pwd">Your Email:</label>
                                 <div class="col-sm-6"> 
@@ -94,13 +89,19 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-3" for="pwd">Company Name: </label>
-                                <div class="col-sm-6"> 
-                                    <input type="name" class="form-control" name="companyname" id="pwd" placeholder="">
+                                <label class="control-label col-sm-3" >Company Name: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="companyname"  placeholder="">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-3" for="pwd">Messages: </label>
+                                <label class="control-label col-sm-3" for="pwd">Job Name: </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="jobname"  placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="pwd">Job Brief: </label>
                                 <div class="col-sm-6"> 
                                     <textarea class="form-control" rows="5" name="message" id="comment"></textarea>
                                 </div>
@@ -108,7 +109,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3" for="pwd">Discount COde: </label>
                                 <div class="col-sm-6">
-                                    <input type="name" class="form-control" name="companyname" id="pwd" value="{{$discountcode}}" placeholder="" readonly>
+                                    <input type="name" class="form-control" name="discountCode" id="pwd" value="{{$discountcode}}" placeholder="" readonly>
                                 </div>
                             </div>
 

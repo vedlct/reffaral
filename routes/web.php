@@ -47,3 +47,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Change Pass
 Route::get('/password', 'HomeController@password')->name('password');
 Route::post('/password', 'HomeController@changepassword')->name('changepassword');
+
+Route::view('/testview', 'email.emailTemplate2');
+Route::view('/testview2', 'email.testemailtemp');

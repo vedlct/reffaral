@@ -30,6 +30,7 @@
                                 <th>Company Name</th>
                                 <th>Email</th>
                                 <th>Order date</th>
+                                <th>Job Name</th>
                                 <th>Discount Code</th>
                                 <th>Reffaral Email</th>
                                 <th>Discount Amount</th>
@@ -49,6 +50,7 @@
                                     <td>{{$ol->cname}}</td>
                                     <td>{{$ol->email}}</td>
                                     <td>{{$ol->referorderedDate}}</td>
+                                    <td>{{$ol->jobname}}</td>
                                     <td>{{$ol->discountCode}}</td>
                                     <td>{{$ol->clientEmail}}</td>
                                     <td>{{$ol->offeramount}}</td>

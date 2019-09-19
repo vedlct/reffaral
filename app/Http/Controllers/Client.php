@@ -62,10 +62,10 @@ class Client extends Controller
             $referemail->discountEndDate = $codeEndDate;
             $referemail->save();
             $data=array('discountcode'=>$code,'codeStartDate'=>$codeStartDate,'codeEndDate'=>$codeEndDate,'referemailid'=>$referemail->id, 'clientid'=>$clientId, 'cemail'=>$cemail->email );
-            Mail::send("email.referEmailTamplate",$data, function($message) use ($value)
+            Mail::send("email.referEmailTamplate2",$data, function($message) use ($value)
             {
 
-                $message->to( $value, "Tech CLoud ltd")->subject('Discount Offer!');
+                $message->to( $value, "Tech CLoud ltd")->subject('You’re invited: try it now!!');
             });
 
         }
@@ -114,6 +114,7 @@ class Client extends Controller
         $referorder->message = $r->message;
         $referorder->referemailId = $r->refermailid;
         $referorder->clientId = $r->clientid;
+        $referorder->jobname = $r->jobname;
         $referorder->referorderedDate = date(now());
         $referorder->save();
 
@@ -127,14 +128,15 @@ class Client extends Controller
             'name'=>$r->name,
             'email'=>$r->email,
             'cname'=>$r->companyname,
-            'sms'=>$r->message
+            'sms'=>$r->message,
+            'jobname'=>$r->jobname
 
         );
 
         Mail::send("email.orderemail",$data, function($message)
         {
 
-            $message->to( Admin_email, "Tech CLoud ltd")->subject('Discount Offer!');
+            $message->to( Admin_email, "Tech CLoud ltd")->subject('New Order From Refferal');
         });
 
         return view('email.orderthankyou');
@@ -144,7 +146,7 @@ class Client extends Controller
 
         $orderlist = Referordered::select('referordered.referorderedId','referordered.referemailId','referordered.referorderedDate',
             'referordered.clientId','referemail.discountCode','clientinfo.email as clientEmail','referordered.name','referordered.email',
-            'referordered.cname','sendinfo.offeramount')
+            'referordered.cname','sendinfo.offeramount', 'jobname')
             ->leftjoin('referemail','referemail.id','=','referordered.referemailId')
             ->leftjoin('clientinfo','clientinfo.clinetinfoid','=','referordered.clientId')
             ->leftjoin('discountlist','discountlist.discountlistid','=','referemail.fkdiscountlistid')

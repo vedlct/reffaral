@@ -19,21 +19,21 @@
                         {{--<form class="form-horizontal">--}}
 
 
-                        <div class="form-group">
+                        <div class="form-group" style="display: none">
                             <div class="row">
                                 <label class="control-label col-md-2">Discount</label>
                                 <input type="text" class="col-md-8  form-control" id="discount" name="discount" maxlength="20" placeholder="Discount Amount" >
                             </div>
 
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: none">
                             <div class="row">
                                 <label class="control-label col-md-2">Discount Start Date</label>
                                 <input type="date" class="col-md-8  form-control" id="discountStartDate" name="discountStartDate"  placeholder="Discount Start Date" >
                             </div>
 
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: none">
                             <div class="row">
                                 <label class="control-label col-md-2">Discount End Date</label>
                                 <input type="date" class="col-md-8  form-control" id="discountEndDate" name="discountEndDate"  placeholder="Discount ExpiryDate" >
@@ -56,7 +56,7 @@
 
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" style="display: none">
                             <div class="row">
                                 <label class="control-label col-md-2 " for="exampleInputEmail">Text</label>
                                 <div class="col-md-8">
@@ -76,6 +76,7 @@
                                 <th>Select</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Time</th>
 
                             </tr>
                             </thead>
@@ -85,6 +86,14 @@
                                     <td><input data-panel-id="{{$client->clinetinfoid}}" onclick="selected_rows(this)"class="chk" name="selected_rows[]" type="checkbox"></td>
                                     <td>{{$client->clientname}}</td>
                                     <td>{{$client->email}}</td>
+                                    <td>
+                                        @foreach($mailtrack as $mt)
+                                            @if($mt->clientid == $client->clinetinfoid)
+                                                {{$mt->date}}
+                                            @endif
+                                            @endforeach
+
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

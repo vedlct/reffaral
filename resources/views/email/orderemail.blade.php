@@ -24,10 +24,6 @@
     <table>
 
         <tr>
-            <td>Name:</td>
-            <td>{{$name}}</td>
-        </tr>
-        <tr>
             <td> Email:</td>
             <td>{{$email}}</td>
         </tr>
@@ -35,9 +31,12 @@
             <td>Company Name:</td>
             <td>{{$cname}}</td>
         </tr>
-
         <tr>
-            <td>Message</td>
+            <td>Job Name</td>
+            <td>{{$jobname}}</td>
+        </tr>
+        <tr>
+            <td>Job Brief</td>
             <td>{{$sms}}</td>
         </tr>
 

@@ -48,12 +48,7 @@
             <ul class="nav">
 
 
-                <li @if(Request::url()==Route('email.sendMailShow') )class="active" @endif>
-                    <a href="{{route('email.sendMailShow')}}">
-                        <i class="now-ui-icons location_map-big"></i>
-                        <p>Send Mail</p>
-                    </a>
-                </li>
+
 
                 <li @if(Request::url()==Route('email.add') )class="active" @endif>
                     <a href="{{route('email.add')}}">
@@ -72,13 +67,20 @@
                 <li @if(Request::url()==Route('reffaralemail') )class="active" @endif>
                     <a href="{{route('reffaralemail')}}">
                         <i class="now-ui-icons design_app"></i>
-                        <p>Reffer Email</p>
+                        <p>Reffer Email List</p>
                     </a>
                 </li>
                 <li @if(Request::url()==Route('reffaralOrderList') )class="active" @endif>
                     <a href="{{route('reffaralOrderList')}}">
                         <i class="now-ui-icons design_app"></i>
                         <p>Reffer Order List</p>
+                    </a>
+                </li>
+
+                <li @if(Request::url()==Route('email.sendMailShow') )class="active" @endif>
+                    <a href="{{route('email.sendMailShow')}}">
+                        <i class="now-ui-icons location_map-big"></i>
+                        <p>Send Mail</p>
                     </a>
                 </li>
 

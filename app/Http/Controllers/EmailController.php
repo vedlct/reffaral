@@ -3,9 +3,11 @@ namespace App\Http\Controllers;
 
 
 use App\Clientinfo;
+use App\Mailtrack;
 use App\Sendinfo;
 use App\Template;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use League\Flysystem\Exception;
@@ -31,9 +33,10 @@ class EmailController extends Controller
 
     public function show(){
         $clientInfo=Clientinfo::select('clinetinfoid','clientname','email')->orderBy('clientname','ASC')->get();
-
+        $mailtrack = Mailtrack::select(DB::raw('max(date) as date'), 'clientid')->groupBy('clientid')->get();
         return view('email.show')
-                ->with('clientInfo',$clientInfo);
+                ->with('clientInfo',$clientInfo)
+                ->with('mailtrack',$mailtrack);
     }
 
     public function update(Request $r){
@@ -49,9 +52,10 @@ class EmailController extends Controller
     public function sendMailShow(){
 
         $clientInfo=Clientinfo::select('clinetinfoid','clientname','email')->orderBy('clientname','ASC')->get();
-
+        $mailtrack = Mailtrack::select(DB::raw('max(date) as date'), 'clientid')->groupBy('clientid')->get();
         return view('email.sendMail')
-            ->with('clientInfo',$clientInfo);
+            ->with('clientInfo',$clientInfo)
+             ->with('mailtrack',$mailtrack);
     }
     public function sendRefferEmail(){
 
@@ -83,7 +87,6 @@ class EmailController extends Controller
 
                 $random = rand(1000, 9999);
 
-
                 $client = Clientinfo::findOrFail($clientId);
                 $SendInfo = new Sendinfo();
                 $SendInfo->offeramount = $discount;
@@ -98,18 +101,22 @@ class EmailController extends Controller
                 $data = array('text' => $text, 'clt' => $cid, 'dicountCode' => $randomDiscountCode, 'discountStartDate' => $discountStartDate, 'discountEndDate' => $discountEndDate, 'offerid' => $SendInfo->sendinfoid);
 
                 if ($template == Template[0]) {
-                    $inviteForDiscount = "email.emailTamplate";
+                    $inviteForDiscount = "email.emailTemplate2";
                 }
 
 
                 Mail::send($inviteForDiscount, $data, function ($message) use ($client) {
 
-                    $message->to($client->email, $client->clientname)->subject('Discount Offer!');
+                    $message->to($client->email, $client->clientname)->subject('Invite your friend');
                 });
 
+
+                $mailtrack = new Mailtrack();
+                $mailtrack->clientid = $clientId;
+                $mailtrack->date = date("Y-m-d h:i:sa");
+                $mailtrack->save();
             }
             Session::flash('message', 'Discount Offer Send successfully');
-
 
 
     }
@@ -144,7 +151,7 @@ class EmailController extends Controller
 
     public function sendEmail(){
 
-        Mail::send('email.emailTamplate', ['key' => 'value'], function($message)
+        Mail::send('email.emailTamplate2', ['key' => 'value'], function($message)
         {
             $message->to('md.sakibrahman@gmail.com', 'John Smith')->subject('Welcome!');
         });
