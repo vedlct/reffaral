@@ -102,6 +102,8 @@ class EmailController extends Controller
 
                 if ($template == Template[0]) {
                     $inviteForDiscount = "email.emailTemplate2";
+                }else if ($template == Template[1]){
+                    $inviteForDiscount = "email.emailTemplate3";
                 }
 
 

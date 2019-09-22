@@ -1,5 +1,5 @@
 <?php
-define('Template',array("send Invite Code For Discount"));
+define('Template',array("50USD", "100USD"));
 define('Admin_email',array("sakibtcl@gmail.com"));
 
 

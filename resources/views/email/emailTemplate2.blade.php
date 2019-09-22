@@ -52,7 +52,7 @@
                 <tr>
                     <td height="89" colspan="2" bgcolor="#FFFFFF">
                         <p style="font-size:13px; color:black;padding:0 55px 0 55px;font-family:hhhh;"><b>Invite your friends to use tech cloud's retouching services,</b></p>
-                        <p style="font-size:13px; color:black;padding:0 55px 0 55px;font-family:hhhh;"><b>if your friend place an order you will get a $100 discount on your next invoice</b></p></td>
+                        <p style="font-size:13px; color:black;padding:0 55px 0 55px;font-family:hhhh;"><b>if your friend place an order you will get a $50 discount on your next invoice</b></p></td>
                 </tr>
                 <tr>
                     <td height="132" colspan="2" align="center" bgcolor="#FFFFFF">
@@ -66,7 +66,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" bgcolor="#FFFFFF"><p style="font-size:13px; color:black;font-family:hhhh"><b>*maximum $200 in a month</b></p></td>
+                    <td colspan="2" bgcolor="#FFFFFF"><p style="font-size:13px; color:black;font-family:hhhh;margin-left: 10px"><b>*maximum $200 in a month</b></p></td>
                 </tr>
             </table>
         </td>
